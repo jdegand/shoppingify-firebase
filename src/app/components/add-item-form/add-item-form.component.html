@@ -1,0 +1,25 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <fieldset>
+    <legend>Create new item</legend>
+    <div>
+      <label for="name">Name</label>
+      <br>
+      <input id="name" type="text" formControlName="name" pInputText>
+    </div>
+    <div>
+      <label for="note">Note</label>
+      <br>
+      <input id="note" type="text" formControlName="note" pInputText>
+    </div>
+    <div>
+      <label for="url">Image URL</label>
+      <br>
+      <input id="url" type="text" formControlName="url" pInputText>
+    </div>
+    <div>
+      <p-dropdown formControlName="category" [options]="categories" optionLabel="name"
+        placeholder="Select a Category"></p-dropdown>
+    </div>
+    <button pButton type="submit" label="Submit" [disabled]="formGroup.invalid"></button>
+  </fieldset>
+</form>

@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.user$.subscribe((user)=> {
-      console.log('user', user);
       if(user){
+        console.log('user', user);
         this.authService.currentUserSignal.set({
           email: user.email!,
           username: user.displayName!
@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
       } else {
         this.authService.currentUserSignal.set(null);
       }
-      console.log(this.authService.currentUserSignal());
     })
   }
 }
