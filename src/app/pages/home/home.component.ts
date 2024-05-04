@@ -3,107 +3,81 @@ import { CategoryFirebaseService } from '../../services/category/category-fireba
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf],
+  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, TabMenuModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   categoryFirebaseService = inject(CategoryFirebaseService);
+  router = inject(Router);
 
   categories$: any;
 
   items: MenuItem[] | undefined;
 
+  tabitems: MenuItem[] | undefined;
+
   ngOnInit(): void {
     this.categories$ = this.categoryFirebaseService.getCategories();
 
+
+    this.tabitems = [
+      { label: 'Home', icon: 'pi pi-fw pi-home', tooltip: 'YEs' },
+      { label: 'Calendar', icon: 'pi pi-fw pi-calendar' },
+      { label: 'Edit', icon: 'pi pi-fw pi-pencil' },
+      { label: 'Documentation', icon: 'pi pi-fw pi-file' },
+      { label: 'Settings', icon: 'pi pi-fw pi-cog' }
+  ];
+
+
     this.items = [
       {
-        label: 'File',
-        icon: 'pi pi-file',
-        items: [
-          {
-            label: 'New',
-            icon: 'pi pi-plus',
-            items: [
-              {
-                label: 'Document',
-                icon: 'pi pi-file',
-                shortcut: '⌘+N'
-              },
-              {
-                label: 'Image',
-                icon: 'pi pi-image',
-                shortcut: '⌘+I'
-              },
-              {
-                label: 'Video',
-                icon: 'pi pi-video',
-                shortcut: '⌘+L'
-              }
-            ]
-          },
-          {
-            label: 'Open',
-            icon: 'pi pi-folder-open',
-            shortcut: '⌘+O'
-          },
-          {
-            label: 'Print',
-            icon: 'pi pi-print',
-            shortcut: '⌘+P'
-          }
-        ]
+        label: 'Home',
+        icon: 'pi pi-home',
+        tooltip: 'Home',
+        tooltipPosition: 'left',
+        command: () => {
+          this.router.navigate(['/list']);
+        }
       },
       {
-        label: 'Edit',
-        icon: 'pi pi-file-edit',
-        items: [
-          {
-            label: 'Copy',
-            icon: 'pi pi-copy',
-            shortcut: '⌘+C'
-          },
-          {
-            label: 'Delete',
-            icon: 'pi pi-times',
-            shortcut: '⌘+D'
-          }
-        ]
+        label: 'list',
+        icon: 'pi pi-list',
+        tooltip: 'List',
+        tooltipPosition: 'right',
+        command: () => {
+          this.router.navigate(['/list']);
+        }
       },
       {
-        label: 'Search',
-        icon: 'pi pi-search',
-        shortcut: '⌘+S'
+        label: 'History',
+        icon: 'pi pi-history',
+        tooltip: 'History',
+        tooltipPosition: 'right',
+        command: () => {
+          this.router.navigate(['/history']);
+        }
       },
       {
-        separator: true
+        label: 'Stats',
+        icon: 'pi pi-chart-line',
+        tooltip: 'Stats',
+        tooltipPosition: 'right',
+        command: () => {
+          this.router.navigate(['/stats']);
+        }
       },
-      {
-        label: 'Share',
-        icon: 'pi pi-share-alt',
-        items: [
-          {
-            label: 'Slack',
-            icon: 'pi pi-slack',
-            badge: '2'
-          },
-          {
-            label: 'Whatsapp',
-            icon: 'pi pi-whatsapp',
-            badge: '3'
-          }
-        ]
-      }
-    ]
+    ];
 
   }
 
-  }
+}
 
 /*
 typescript

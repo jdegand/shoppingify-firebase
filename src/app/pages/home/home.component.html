@@ -16,3 +16,5 @@
 <h1><span>Shoppingify</span> allows you to take your shopping list wherever you go</h1>
 
 <div *ngFor="let c of categories$ | async">{{ c.name }}</div>
+
+<p-tabMenu [model]="tabitems"></p-tabMenu>
