@@ -1,26 +1,27 @@
-<h1>Register</h1>
+<div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+    <div class="text-center mb-5">
+        <img src="assets/images/logo.svg" alt="Shoppingify" height="50" class="mb-3">
+        <div class="text-900 text-3xl font-medium mb-3">Shoppingify</div>
+        <span class="text-600 font-medium line-height-3">Already have an account?</span>
+        <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" routerLink="/login">Sign in!</a>
+    </div>
 
-@if (errorMessage) {
-    <div>{{ errorMessage }}</div>
-}
-
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="username">Username:</label>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="username" class="block text-900 font-medium mb-2">Username</label>
         <br>
-        <input id="username" type="text" placeholder="Username" formControlName="username" />
-    </div>
-    <div>
-        <label for="email">Email:</label>
+        <input id="username" type="text" formControlName="username" pInputText class="w-full mb-3">
         <br>
-        <input id="email" type="text" placeholder="Email" formControlName="email" />
-    </div>
-    <div>
-        <label for="password">Password:</label>
+        <label for="email" class="block text-900 font-medium mb-2">Email</label>
         <br>
-        <input id="password" type="password" formControlName="password" />
-    </div>
-    <div>
-        <button type="submit">Join</button>
-    </div>
-</form>
+        <input id="email" type="text" formControlName="email" pInputText class="w-full mb-3">
+        <br>
+        <label for="password" class="block text-900 font-medium mb-2">Password</label>
+        <br>
+        <input id="password" type="password" formControlName="password" pInputText class="w-full mb-3">
+        <br>
+        <button pButton pRipple label="Join" [disabled]="form.invalid"></button>
+    </form>
+    @if (errorMessage) {
+        <div>{{ errorMessage }}</div>
+    }
+</div>
