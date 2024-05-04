@@ -7,6 +7,7 @@ This is a reworking of a legacy DevChallenges project I completed with [React](h
 - [Angular](https://angular.dev)
 - [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 - [Angular Fire](https://github.com/angular/angularfire)
+- [PrimeNG](https://primeng.org)
 
 ## Thoughts
 
@@ -27,7 +28,8 @@ This is a reworking of a legacy DevChallenges project I completed with [React](h
 - PrimeNG has some chart functionality so that is one reason I decided to use it instead of Angular Material.
 - PrimeNG menu components have limited vertical orientation options.  It would be nice to have `orientation` available to all menus, but I believe animations would break if you try to use most menu components in a vertical position. See this [Github issue](https://github.com/orgs/primefaces/discussions/1134) for the limitations of the `TabMenu` component. 
 - `MegaMenu`, `TieredMenu`, and `Dock` can be used vertically.
-- `MegaMenu` may have broken keyboard accessibility.  This [fix](https://github.com/primefaces/primeng/pull/15407/files) is not yet merged and fully tested.  
+- Adding a `tooltip` to `MenuItems` in the `TieredMenu` component does not work?  I looked in the source code and the TieredMenu component has the `pTooltip` directive.  
+- You can't use a `title` attribute for a tooltip either.  See this [Github issue](https://github.com/primefaces/primeng/issues/14217).
 
 ## Continued Development
 
