@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, KeyValuePipe, NgFor, NgIf } from '@angular/common';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { ItemFirebaseService } from '../../services/item/item-firebase.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf],
+  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -17,15 +17,30 @@ export class HomeComponent implements OnInit {
   router = inject(Router);
 
   items: MenuItem[] | undefined;
-  groupedItems: any = {};
-
+  //groupedItems: {[key:string]: any} = {};
+  groupedItemsMap = new Map<string, any[]>();
+  
   ngOnInit() {
+    /*
     this.itemFirebaseService.getItems().subscribe((items) => {
+      console.log('items', items);
       items.forEach((item: any) => {
         if (!this.groupedItems[item.categoryName]) {
           this.groupedItems[item.categoryName] = [];
         }
         this.groupedItems[item.categoryName].push(item);
+      });
+    });
+    */
+
+    this.itemFirebaseService.getItems().subscribe((items) => {
+      console.log('items', items);
+      
+      items.forEach((item: any) => {
+        if (!this.groupedItemsMap.has(item.categoryName)) {
+          this.groupedItemsMap.set(item.categoryName, []);
+        }
+        this.groupedItemsMap.get(item.categoryName)?.push(item);
       });
     });
 
@@ -61,8 +76,14 @@ export class HomeComponent implements OnInit {
     ];
   }
 
+  /*
   getKeys(): string[] {
     return Object.keys(this.groupedItems);
+  }
+  */
+
+  getGroupedItemsArray(): [string, any[]][] {
+    return Array.from(this.groupedItemsMap.entries());
   }
 
 }

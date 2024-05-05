@@ -61,3 +61,7 @@ This is a reworking of a legacy DevChallenges project I completed with [React](h
 - [Github](https://github.com/primefaces/primeng/issues/13496) - Menu & TrieredMenu - add option to inject custom icons by template or model #13496
 - [Reddit](https://www.reddit.com/r/Angular2/comments/1090x9c/ngdeep_alternatives/?rdt=52856) - ngdeep alternatives
 - [Stack Overflow](https://stackoverflow.com/questions/35534959/access-key-and-value-of-object-using-ngfor) - access key and value of object using ngfor
+- [Stack Overflow](https://stackoverflow.com/questions/31490713/iterate-over-object-in-angular) - iterate over object in angular
+- [Stack Overflow](https://stackoverflow.com/questions/78023327/how-to-iterate-over-object-in-angular-17-with-new-for) - how to iterate over object in angular 17 with new for
+- [Stack Overflow](https://stackoverflow.com/questions/16174182/typescript-looping-through-a-dictionary) - typescript looping through a dictionary
+- [Stack Overflow](https://stackoverflow.com/questions/47834222/display-map-content-in-angular-4-template) - display map content in angular 4 template
