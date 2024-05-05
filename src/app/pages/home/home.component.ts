@@ -1,47 +1,38 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CategoryFirebaseService } from '../../services/category/category-firebase.service';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
-import { TabMenuModule } from 'primeng/tabmenu';
+import { ItemFirebaseService } from '../../services/item/item-firebase.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, TabMenuModule],
+  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  categoryFirebaseService = inject(CategoryFirebaseService);
+  itemFirebaseService = inject(ItemFirebaseService)
   router = inject(Router);
 
-  categories$: any;
-
   items: MenuItem[] | undefined;
+  groupedItems: any = {};
 
-  tabitems: MenuItem[] | undefined;
-
-  ngOnInit(): void {
-    this.categories$ = this.categoryFirebaseService.getCategories();
-
-
-    this.tabitems = [
-      { label: 'Home', icon: 'pi pi-fw pi-home', tooltip: 'YEs' },
-      { label: 'Calendar', icon: 'pi pi-fw pi-calendar' },
-      { label: 'Edit', icon: 'pi pi-fw pi-pencil' },
-      { label: 'Documentation', icon: 'pi pi-fw pi-file' },
-      { label: 'Settings', icon: 'pi pi-fw pi-cog' }
-  ];
-
+  ngOnInit() {
+    this.itemFirebaseService.getItems().subscribe((items) => {
+      items.forEach((item: any) => {
+        if (!this.groupedItems[item.categoryName]) {
+          this.groupedItems[item.categoryName] = [];
+        }
+        this.groupedItems[item.categoryName].push(item);
+      });
+    });
 
     this.items = [
       {
         label: 'Home',
         icon: 'pi pi-home',
-        tooltip: 'Home',
-        tooltipPosition: 'left',
         command: () => {
           this.router.navigate(['/list']);
         }
@@ -49,8 +40,6 @@ export class HomeComponent implements OnInit {
       {
         label: 'list',
         icon: 'pi pi-list',
-        tooltip: 'List',
-        tooltipPosition: 'right',
         command: () => {
           this.router.navigate(['/list']);
         }
@@ -58,8 +47,6 @@ export class HomeComponent implements OnInit {
       {
         label: 'History',
         icon: 'pi pi-history',
-        tooltip: 'History',
-        tooltipPosition: 'right',
         command: () => {
           this.router.navigate(['/history']);
         }
@@ -67,22 +54,22 @@ export class HomeComponent implements OnInit {
       {
         label: 'Stats',
         icon: 'pi pi-chart-line',
-        tooltip: 'Stats',
-        tooltipPosition: 'right',
         command: () => {
           this.router.navigate(['/stats']);
         }
       },
     ];
+  }
 
+  getKeys(): string[] {
+    return Object.keys(this.groupedItems);
   }
 
 }
 
 /*
-typescript
 // Assuming itemsData is an array of items with category IDs
-groupedItems: { [key: string]: Item[] } = {};
+groupedItems: { [key: string]: Item[] } = { };
 
 ngOnInit() {
   this.groupItemsByCategory();
@@ -97,13 +84,13 @@ groupItemsByCategory() {
   });
 }
 
+// Object.keys does not work inside an Angular template
 <div *ngFor="let categoryId of Object.keys(groupedItems)">
-  <h2>Category: {{ categoryId }}</h2>
-  <ul>
-    <li *ngFor="let item of groupedItems[categoryId]">
+  <h2>Category:{{ categoryId }}</h2>
+    <ul>
+    <li *ngFor="let item of groupedItems[categoryId]" >
       Item Name: {{ item.name }} - Category ID: {{ item.categoryId }}
     </li>
   </ul>
 </div>
-
 */

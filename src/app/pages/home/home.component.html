@@ -15,6 +15,33 @@
 
 <h1><span>Shoppingify</span> allows you to take your shopping list wherever you go</h1>
 
-<div *ngFor="let c of categories$ | async">{{ c.name }}</div>
+<!--
+<div>
+    {{groupedItems | json}}
+</div>
 
-<p-tabMenu [model]="tabitems"></p-tabMenu>
+<div *ngFor="let item of groupedItems | keyvalue">
+    <div>{{ item.key }}:{{ item.value }}</div>
+</div>
+-->
+
+<!--
+// try to use a keys pipe ?
+<div *ngFor="let categoryId of groupedItems | keys">
+    <h2>Category: {{ categoryId }}</h2>
+    <ul>
+        <li *ngFor="let item of groupedItems[categoryId]">
+            Item Name: {{ item.name }} - Category ID: {{ item.categoryId }}
+        </li>
+    </ul>
+</div>
+-->
+
+<div *ngFor="let category of getKeys()">
+    <h2>Category: {{ category }}</h2>
+    <ul>
+        <li *ngFor="let item of groupedItems[category]">
+            Item Name: {{ item.name }} - Category Name: {{ item.categoryName }}
+        </li>
+    </ul>
+</div>

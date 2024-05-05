@@ -58,3 +58,6 @@ This is a reworking of a legacy DevChallenges project I completed with [React](h
 - [Github](https://github.com/aaronksaunders/angular-fire-crud) - angular fire crud
 - [Medium](https://medium.com/@haseenakhader.uk/angular-reactive-form-using-primeng-and-its-validation-8baf6b9e7ed4) - angular reactive form using primeng and its validation
 - [Forum](https://www.webdesignerforum.co.uk/topic/47379-should-a-button-go-inside-or-outside-a-fieldset/) - should a button go inside or outside a fieldset
+- [Github](https://github.com/primefaces/primeng/issues/13496) - Menu & TrieredMenu - add option to inject custom icons by template or model #13496
+- [Reddit](https://www.reddit.com/r/Angular2/comments/1090x9c/ngdeep_alternatives/?rdt=52856) - ngdeep alternatives
+- [Stack Overflow](https://stackoverflow.com/questions/35534959/access-key-and-value-of-object-using-ngfor) - access key and value of object using ngfor
