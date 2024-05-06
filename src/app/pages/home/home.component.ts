@@ -4,11 +4,12 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { ItemFirebaseService } from '../../services/item/item-firebase.service';
+import { SplitterModule } from 'primeng/splitter';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe],
+  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe, SplitterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -17,22 +18,9 @@ export class HomeComponent implements OnInit {
   router = inject(Router);
 
   items: MenuItem[] | undefined;
-  //groupedItems: {[key:string]: any} = {};
   groupedItemsMap = new Map<string, any[]>();
   
   ngOnInit() {
-    /*
-    this.itemFirebaseService.getItems().subscribe((items) => {
-      console.log('items', items);
-      items.forEach((item: any) => {
-        if (!this.groupedItems[item.categoryName]) {
-          this.groupedItems[item.categoryName] = [];
-        }
-        this.groupedItems[item.categoryName].push(item);
-      });
-    });
-    */
-
     this.itemFirebaseService.getItems().subscribe((items) => {
       console.log('items', items);
       
@@ -49,7 +37,7 @@ export class HomeComponent implements OnInit {
         label: 'Home',
         icon: 'pi pi-home',
         command: () => {
-          this.router.navigate(['/list']);
+          this.router.navigate(['/home']);
         }
       },
       {
@@ -76,42 +64,8 @@ export class HomeComponent implements OnInit {
     ];
   }
 
-  /*
-  getKeys(): string[] {
-    return Object.keys(this.groupedItems);
-  }
-  */
-
   getGroupedItemsArray(): [string, any[]][] {
     return Array.from(this.groupedItemsMap.entries());
   }
 
 }
-
-/*
-// Assuming itemsData is an array of items with category IDs
-groupedItems: { [key: string]: Item[] } = { };
-
-ngOnInit() {
-  this.groupItemsByCategory();
-}
-
-groupItemsByCategory() {
-  this.itemsData.forEach(item => {
-    if (!this.groupedItems[item.categoryId]) {
-      this.groupedItems[item.categoryId] = [];
-    }
-    this.groupedItems[item.categoryId].push(item);
-  });
-}
-
-// Object.keys does not work inside an Angular template
-<div *ngFor="let categoryId of Object.keys(groupedItems)">
-  <h2>Category:{{ categoryId }}</h2>
-    <ul>
-    <li *ngFor="let item of groupedItems[categoryId]" >
-      Item Name: {{ item.name }} - Category ID: {{ item.categoryId }}
-    </li>
-  </ul>
-</div>
-*/

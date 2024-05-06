@@ -38,6 +38,12 @@ export const routes: Routes = [
       import("./pages/home/home.component").then(
         (m) => m.HomeComponent,
       ),
+      children: [
+        {
+          path: "new",
+          loadComponent: () => import('./pages/add-item-form/add-item-form.component').then((m)=> m.AddItemFormComponent)
+        }
+      ]
   },
   { path: "", redirectTo: "login", pathMatch: "full" },
   {

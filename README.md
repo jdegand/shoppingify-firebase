@@ -30,11 +30,17 @@ This is a reworking of a legacy DevChallenges project I completed with [React](h
 - `MegaMenu`, `TieredMenu`, and `Dock` can be used vertically.
 - Adding a `tooltip` to `MenuItems` in the `TieredMenu` component does not work?  I looked in the source code and the TieredMenu component has the `pTooltip` directive.  
 - You can't use a `title` attribute for a tooltip either.  See this [Github issue](https://github.com/primefaces/primeng/issues/14217).
+- `Object.keys` does not work inside an Angular template.
+- Could use a sidepanel or a modal for the new item form.  
+- Since I am using a dropdown for the category input and it is the last input of the form, it might not be good to use a modal for the form.
+- Use a router-outlet for the cart and the new item form?  An advantage of using router outlet would be always having a correct URL path.
+- The original DevChallenges design does not take into account mobile design.  Having separate URL paths would help translate the design to mobile.
 
 ## Continued Development
 
 - PrimeFlex?
 - Guards
+- TypeScript fixes
 - Tests
 - Replace `getRawValue` in the register and login submit functions?  
 
@@ -64,4 +70,4 @@ This is a reworking of a legacy DevChallenges project I completed with [React](h
 - [Stack Overflow](https://stackoverflow.com/questions/31490713/iterate-over-object-in-angular) - iterate over object in angular
 - [Stack Overflow](https://stackoverflow.com/questions/78023327/how-to-iterate-over-object-in-angular-17-with-new-for) - how to iterate over object in angular 17 with new for
 - [Stack Overflow](https://stackoverflow.com/questions/16174182/typescript-looping-through-a-dictionary) - typescript looping through a dictionary
-- [Stack Overflow](https://stackoverflow.com/questions/47834222/display-map-content-in-angular-4-template) - display map content in angular 4 template
+- [Stack Overflow](https://stackoverflow.com/questions/47834222/display-map-content-in-angular-4-template) - display map content in angular 4 

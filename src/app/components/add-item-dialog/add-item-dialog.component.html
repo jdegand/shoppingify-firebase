@@ -1,0 +1,44 @@
+<p-card class="card">
+    <div class="flex">
+        <p-image src="../../../assets/images/source.svg" alt="" width="44" />
+        <p>Didn't find what you need?</p>
+    </div>
+    <p-button (click)="showDialog()" label="Add Item" />
+</p-card>
+<p-dialog header="Add Item" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="username" class="font-semibold w-6rem">Username</label>
+        <input pInputText id="username" class="flex-auto" autocomplete="off" />
+    </div>
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">Email</label>
+        <input pInputText id="email" class="flex-auto" autocomplete="off" />
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+        <p-button label="Save" (click)="visible = false" />
+    </div>
+</p-dialog>
+
+
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <p-floatLabel>
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" pInputText>
+    </p-floatLabel>
+
+    <p-floatLabel>
+        <label for="note">Note</label>
+        <input id="note" type="text" formControlName="note" pInputText>
+    </p-floatLabel>
+
+    <p-floatLabel>
+        <label for="url">Image URL</label>
+        <input id="url" type="text" formControlName="url" pInputText>
+    </p-floatLabel>
+
+    <p-dropdown formControlName="category" [options]="categories" optionLabel="name"
+        placeholder="Select a Category"></p-dropdown>
+
+    <button pButton type="submit" label="Submit" [disabled]="formGroup.invalid"></button>
+</form>
