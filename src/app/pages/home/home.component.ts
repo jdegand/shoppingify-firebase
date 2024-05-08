@@ -23,6 +23,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.itemFirebaseService.getItems().subscribe((items) => {
       console.log('items', items);
+
+      // need to reset the groupedItemsMap after you add an item 
+      // previous items will be duplicated if you don't reset the map
+      this.groupedItemsMap = new Map<string, any[]>();
       
       items.forEach((item: any) => {
         if (!this.groupedItemsMap.has(item.categoryName)) {
@@ -34,17 +38,10 @@ export class HomeComponent implements OnInit {
 
     this.items = [
       {
-        label: 'Home',
-        icon: 'pi pi-home',
-        command: () => {
-          this.router.navigate(['/home']);
-        }
-      },
-      {
         label: 'list',
         icon: 'pi pi-list',
         command: () => {
-          this.router.navigate(['/list']);
+          this.router.navigate(['/home']);
         }
       },
       {

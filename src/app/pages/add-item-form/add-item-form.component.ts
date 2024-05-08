@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
+import { ItemFirebaseService } from '../../services/item/item-firebase.service';
 
 @Component({
   selector: 'app-add-item-form',
@@ -13,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 export class AddItemFormComponent implements OnInit {
 
   fb = inject(FormBuilder);
+  itemFirebaseService = inject(ItemFirebaseService);
 
   categories: any | undefined;
 
@@ -24,10 +26,10 @@ export class AddItemFormComponent implements OnInit {
     // necessary to have category id ?
 
     this.categories = [
-      { name: 'Frozen Foods', code: 'NY' },
-      { name: 'Diary', code: 'RM' },
-      { name: 'Beverages', code: 'LDN' },
-      { name: 'Fruits', code: 'IST' },
+      { name: 'Frozen Foods', id: 'NY' },
+      { name: 'Diary', id: 'RM' },
+      { name: 'Beverages', id: 'LDN' },
+      { name: 'Fruits', id: 'IST' },
     ];
 
     this.formGroup = this.fb.group({
@@ -40,6 +42,11 @@ export class AddItemFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formGroup);
+
+    if(this.formGroup.valid){
+      this.itemFirebaseService.addItem(this.formGroup.value);
+    }
+
   }
 
 }
