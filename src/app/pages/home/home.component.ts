@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 
     this.items = [
       {
-        label: 'list',
+        label: 'List',
         icon: 'pi pi-list',
         command: () => {
           this.router.navigate(['/home']);

@@ -1,18 +1,17 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
-import { RegisterRequest } from '../../interfaces/registerRequest.interface';
+import { RegisterRequest } from '../../interfaces/register-request.interface';
 import { Observable, from } from 'rxjs';
-import { LoginRequest } from '../../interfaces/loginRequest.interface';
-import { UserInterface } from '../../interfaces/userInterface.interface';
+import { LoginRequest } from '../../interfaces/login-request.interface';
+import { User } from '../../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   firebaseAuth = inject(Auth);
   user$ = user(this.firebaseAuth);
-  currentUserSignal = signal<UserInterface | null | undefined>(undefined);
+  currentUserSignal = signal<User | null | undefined>(undefined);
 
   register(payload: RegisterRequest): Observable<void> {
     const promise = createUserWithEmailAndPassword(

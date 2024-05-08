@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { ItemFirebaseService } from '../../services/item/item-firebase.service';
+import { CategoryFirebaseService } from '../../services/category/category-firebase.service';
+import { CategoriesResponse } from '../../interfaces/categories-response.interface';
+import { DocumentData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-add-item-form',
@@ -12,25 +15,21 @@ import { ItemFirebaseService } from '../../services/item/item-firebase.service';
   styleUrl: './add-item-form.component.css'
 })
 export class AddItemFormComponent implements OnInit {
-
   fb = inject(FormBuilder);
   itemFirebaseService = inject(ItemFirebaseService);
+  categoryFirebaseService = inject(CategoryFirebaseService);
 
-  categories: any | undefined;
+  categories: CategoriesResponse[] = [];
 
   formGroup!: FormGroup;
 
   ngOnInit() {
 
+    this.categoryFirebaseService.getCategories().subscribe((data: DocumentData)=> {
+      this.categories = data as CategoriesResponse[];
+    })
     // get the categories with API request and use that here
     // necessary to have category id ?
-
-    this.categories = [
-      { name: 'Frozen Foods', id: 'NY' },
-      { name: 'Diary', id: 'RM' },
-      { name: 'Beverages', id: 'LDN' },
-      { name: 'Fruits', id: 'IST' },
-    ];
 
     this.formGroup = this.fb.group({
       name: ["", Validators.required],
