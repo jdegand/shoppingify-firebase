@@ -46,6 +46,7 @@ This is a reworking of a legacy DevChallenges project I completed with [React](h
 
 ## Useful Resources
 
+- [Blog](https://piccalil.li/blog/a-more-modern-css-reset/) - CSS Reset
 - [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) - IndexedDB API
 - [YouTube](https://www.youtube.com/watch?v=586O934xrhQ) - Angular Firebase Authentication - Implement Auth in Minutes
 - [YouTube](https://www.youtube.com/watch?v=0ihoworuX4o&t=662s) - How to Connect Firebase to Angular Project - Do It Right

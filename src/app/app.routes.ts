@@ -8,22 +8,6 @@ export const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: "history",
-    title: "Past shopping lists",
-    loadComponent: () =>
-      import("./pages/history/history.component").then(
-        (m) => m.HistoryComponent,
-      ),
-  },
-  {
-    path: "stats",
-    title: "Stats",
-    loadComponent: () =>
-      import("./pages/stats/stats.component").then(
-        (m) => m.StatsComponent,
-      ),
-  },
-  {
     path: "register",
     title: "Please sign up",
     loadComponent: () =>
@@ -38,12 +22,34 @@ export const routes: Routes = [
       import("./pages/home/home.component").then(
         (m) => m.HomeComponent,
       ),
-      children: [
-        {
-          path: "new",
-          loadComponent: () => import('./pages/add-item-form/add-item-form.component').then((m)=> m.AddItemFormComponent)
-        }
-      ]
+    children: [
+      {
+        path: "new",
+        title: 'New Item',
+        loadComponent: () => import('./pages/add-item-form/add-item-form.component').then((m) => m.AddItemFormComponent)
+      },
+      {
+        path: "cart",
+        title: "Cart",
+        loadComponent: () => import('./pages/cart/cart.component').then((m) => m.CartComponent)
+      },
+      {
+        path: "history",
+        title: "Past shopping lists",
+        loadComponent: () =>
+          import("./pages/history/history.component").then(
+            (m) => m.HistoryComponent,
+          ),
+      },
+      {
+        path: "stats",
+        title: "Stats",
+        loadComponent: () =>
+          import("./pages/stats/stats.component").then(
+            (m) => m.StatsComponent,
+          ),
+      },
+    ]
   },
   { path: "", redirectTo: "login", pathMatch: "full" },
   {

@@ -21,17 +21,19 @@
     <ng-template pTemplate>
         <p-splitter [panelSizes]="[70, 30]">
             <ng-template pTemplate>
-                <div class="col flex align-items-center justify-content-center">
+                <p-scrollPanel [style]="{ width: '100%', height: '100vh' }">
                     <h1><span>Shoppingify</span> allows you to take your shopping list wherever you go</h1>
                     <div *ngFor="let entry of getGroupedItemsArray()">
                         <h3>{{ entry[0] }}</h3>
-                        <ul>
+                        <ul class="flex">
                             <li *ngFor="let item of entry[1]">
-                                {{ item | json }}
+                                <p-card header="{{item.name | titlecase}}">
+                                    <p-button icon="pi pi-plus" />
+                                </p-card>
                             </li>
                         </ul>
                     </div>
-                </div>
+                </p-scrollPanel>
             </ng-template>
             <ng-template pTemplate>
                 <div class="col flex align-items-center justify-content-center">
