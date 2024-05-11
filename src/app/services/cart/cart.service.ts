@@ -41,34 +41,3 @@ export class CartService {
     );
   }
 }
-
-
-/*
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class CartService {
-  items: any[] = [];
-
-  constructor() { }
-
-  addItemToCart(item: any) {
-    this.items.push(item);
-  }
-
-  getItemsInCart() {
-    return this.items;
-  }
-
-  deleteItemFromCart(itemId: number): void {
-    this.items = this.items.filter(item => item.id !== itemId);
-  }
-
-  clearCart() {
-    this.items = [];
-    return this.items;
-  }
-}
-*/

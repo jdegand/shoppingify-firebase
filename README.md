@@ -1,6 +1,6 @@
 # Shoppingify Firebase
 
-This is a reworking of a legacy DevChallenges project I completed with [React](https://github.com/jdegand/shoppingify-frontend).
+This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/challenges/mGd5VpbO4JnzU6I9l96x) project I completed with [React](https://github.com/jdegand/shoppingify-frontend).
 
 ## Built With
 
@@ -35,12 +35,14 @@ This is a reworking of a legacy DevChallenges project I completed with [React](h
 - Since I am using a dropdown for the category input and it is the last input of the form, it might not be good to use a modal for the form.
 - Use a router-outlet for the cart and the new item form?  An advantage of using router outlet would be always having a correct URL path.
 - The original DevChallenges design does not take into account mobile design.  Having separate URL paths would help translate the design to mobile.
+- Used CSS layers to have a CSS reset without overwriting the PrimeNG component styles.  
 
 ## Continued Development
 
-- PrimeFlex?
+- PrimeFlex?  Using CDN temporarily -> if I keep it, I will install it properly. 
 - Guards
 - TypeScript fixes
+- ESLint
 - Tests
 - Replace `getRawValue` in the register and login submit functions?  
 

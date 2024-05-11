@@ -40,26 +40,3 @@
         </p-splitter>
     </ng-template>
 </p-splitter>
-
-<!--
-// can't use a button inside a li tag 
-
-<div *ngFor="let category of (groupedItemsMap$ | async | keyvalue)">
-    <h2>{{ category.key }}</h2>
-    <ul>
-        <li *ngFor="let item of category.value">
-            {{ item | json }}
-        </li>
-    </ul>
-</div>
-
-@for(entry of getGroupedItemsArray(); track entry){
-    <h3>{{ entry[0] }}</h3>
-    @for(item of entry[1]; track item){
-        <div class="flex">
-            <p>{{item.name | titlecase}}</p>
-            <p-button label="Search" icon="pi pi-check" (onClick)="addToCart()" />
-        </div>
-    }
-}
--->
