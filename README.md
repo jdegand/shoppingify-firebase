@@ -73,3 +73,5 @@ This is a reworking of a legacy DevChallenges project I completed with [React](h
 - [Stack Overflow](https://stackoverflow.com/questions/16174182/typescript-looping-through-a-dictionary) - typescript looping through a dictionary
 - [Stack Overflow](https://stackoverflow.com/questions/47834222/display-map-content-in-angular-4-template) - display map content in angular 4 
 - [Dev.to](https://dev.to/imkrunalkanojiya/firebase-v9-firestore-adddoc-and-setdoc-method-examples-nhe) - firebase v9 firestore adddoc and setdoc method examples
+- [YouTube](https://www.youtube.com/watch?v=6W6gycuhiN0&t=4110s) - Signals Unleashed: The Full Guide
+- [Github](https://github.com/DeborahK/Angular-Signals) - Angular Signals

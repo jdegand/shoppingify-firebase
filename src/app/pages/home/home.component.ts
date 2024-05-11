@@ -9,6 +9,8 @@ import { AuthService } from '../../services/auth/auth.service';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { CartService } from '../../services/cart/cart.service';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -20,26 +22,27 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 export class HomeComponent implements OnInit {
   itemFirebaseService = inject(ItemFirebaseService);
   authService = inject(AuthService);
+  cartService = inject(CartService);
   router = inject(Router);
 
   items: MenuItem[] | undefined;
-  groupedItemsMap = new Map<string, any[]>();
-  
-  ngOnInit() {
-    this.itemFirebaseService.getItems().subscribe((items) => {
-      console.log('items', items);
+  groupedItemsMap$: Observable<Map<string, any[]>> | undefined = undefined;
 
-      // need to reset the groupedItemsMap after you add an item 
-      // previous items will be duplicated if you don't reset the map
-      this.groupedItemsMap = new Map<string, any[]>();
-      
-      items.forEach((item: any) => {
-        if (!this.groupedItemsMap.has(item.categoryName)) {
-          this.groupedItemsMap.set(item.categoryName, []);
-        }
-        this.groupedItemsMap.get(item.categoryName)?.push(item);
-      });
-    });
+  ngOnInit() {
+    this.groupedItemsMap$ = this.itemFirebaseService.getItems().pipe(
+      map((items: any) => {
+        const map = new Map<string, any[]>();
+
+        items.forEach((item: any) => {
+          if (!map.has(item.categoryName)) {
+            map.set(item.categoryName, []);
+          }
+          map.get(item.categoryName)?.push(item);
+        });
+
+        return map;
+      })
+    )
 
     // could nest another items array inside the home object 
     // then you wouldn't have to use `/home` in the routes
@@ -80,7 +83,7 @@ export class HomeComponent implements OnInit {
         command: () => {
           this.router.navigate(['/home/cart']);
         }
-      }, 
+      },
       {
         label: 'Sign Out',
         icon: 'pi pi-sign-out',
@@ -92,8 +95,9 @@ export class HomeComponent implements OnInit {
     ];
   }
 
-  getGroupedItemsArray(): [string, any[]][] {
-    return Array.from(this.groupedItemsMap.entries());
+  addToCart(item: any) {
+    console.log('clicked', item);
+    this.cartService.addToCart(item);
   }
 
 }

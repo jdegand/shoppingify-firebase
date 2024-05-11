@@ -1,1 +1,7 @@
-<p>cart works!</p>
+@if(cartItems().length) {
+    @for(item of cartItems(); track item){
+        <p>{{item.name}}</p>
+    }
+} @else {
+    <p>Cart is empty.</p>
+}

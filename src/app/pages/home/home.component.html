@@ -23,16 +23,13 @@
             <ng-template pTemplate>
                 <p-scrollPanel [style]="{ width: '100%', height: '100vh' }">
                     <h1><span>Shoppingify</span> allows you to take your shopping list wherever you go</h1>
-                    <div *ngFor="let entry of getGroupedItemsArray()">
-                        <h3>{{ entry[0] }}</h3>
-                        <ul class="flex">
-                            <li *ngFor="let item of entry[1]">
-                                <p-card header="{{item.name | titlecase}}">
-                                    <p-button icon="pi pi-plus" />
-                                </p-card>
-                            </li>
-                        </ul>
-                    </div>
+                    <div *ngFor="let category of (groupedItemsMap$ | async | keyvalue)">
+                        <h2>{{ category.key }}</h2>
+                        <div class="flex" *ngFor="let item of category.value">
+                            <p>{{item.name | titlecase}}</p>
+                            <p-button label="Save" icon="pi pi-check" (onClick)="addToCart(item)" />
+                        </div>
+                      </div>
                 </p-scrollPanel>
             </ng-template>
             <ng-template pTemplate>
@@ -43,3 +40,26 @@
         </p-splitter>
     </ng-template>
 </p-splitter>
+
+<!--
+// can't use a button inside a li tag 
+
+<div *ngFor="let category of (groupedItemsMap$ | async | keyvalue)">
+    <h2>{{ category.key }}</h2>
+    <ul>
+        <li *ngFor="let item of category.value">
+            {{ item | json }}
+        </li>
+    </ul>
+</div>
+
+@for(entry of getGroupedItemsArray(); track entry){
+    <h3>{{ entry[0] }}</h3>
+    @for(item of entry[1]; track item){
+        <div class="flex">
+            <p>{{item.name | titlecase}}</p>
+            <p-button label="Search" icon="pi pi-check" (onClick)="addToCart()" />
+        </div>
+    }
+}
+-->
