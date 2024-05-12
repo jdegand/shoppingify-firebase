@@ -1,7 +1,20 @@
 @if(cartItems().length) {
-    @for(item of cartItems(); track item){
-        <p>{{item.name}}</p>
-    }
+    <div>
+        @for(item of cartItems(); track item){
+            <div class="flex">
+                <p>{{item.name | titlecase}} : {{item.quantity}}</p>
+                <p-button 
+                    ariaLabel="Delete" 
+                    icon="pi pi-trash" 
+                    severity="danger" 
+                    (onClick)="removeFromCart(item)"
+                />
+            </div>
+        }
+    </div>
+    <div>
+        <p-button label="Clear Cart" (onClick)="clear()" />
+    </div>
 } @else {
     <p>Cart is empty.</p>
 }

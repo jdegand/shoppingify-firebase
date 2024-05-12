@@ -23,6 +23,10 @@ export class CartService {
     }
   }
 
+  emptyCart(){
+    this.cartItems.set([]);
+  }
+
   // Remove the item from the cart
   removeFromCart(cartItem: any): void {
     // Use update and not mutate because it's replacing the array, not updating an element
@@ -35,7 +39,7 @@ export class CartService {
     this.cartItems.update((items) =>
       items.map((item) =>
         item.name === cartItem.name
-          ? { item: cartItem, quantity }
+          ? { ...cartItem, quantity }
           : item
       )
     );

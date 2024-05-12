@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
+import { ButtonModule } from 'primeng/button';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [],
+  imports: [ButtonModule, TitleCasePipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
@@ -20,6 +22,10 @@ export class CartComponent {
 
   removeFromCart(item: any) {
     this.cartService.removeFromCart(item);
+  }
+
+  clear() {
+    this.cartService.emptyCart();
   }
 
 }

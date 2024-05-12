@@ -27,7 +27,7 @@
                         <h2>{{ category.key }}</h2>
                         <div class="flex" *ngFor="let item of category.value">
                             <p>{{item.name | titlecase}}</p>
-                            <p-button label="Save" icon="pi pi-check" (onClick)="addToCart(item)" />
+                            <p-button label="Save" icon="pi pi-plus" (onClick)="addToCart(item)" />
                         </div>
                       </div>
                 </p-scrollPanel>
