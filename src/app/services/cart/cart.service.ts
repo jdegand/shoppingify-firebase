@@ -19,11 +19,11 @@ export class CartService {
       // Add the item to the cart
       // Use update and not mutate because it's replacing the array, not updating an element
       this.cartItems.update((items) => [...items, { ...item, quantity: 1 }]);
-      console.log('added',this.cartItems());
+      console.log('added', this.cartItems());
     }
   }
 
-  emptyCart(){
+  emptyCart() {
     this.cartItems.set([]);
   }
 

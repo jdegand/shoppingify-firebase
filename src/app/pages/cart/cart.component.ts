@@ -17,6 +17,9 @@ export class CartComponent {
   cartItems = this.cartService.cartItems;
 
   onQuantitySelected(item: any, qty: number) {
+    if(qty === 0){
+      this.cartService.removeFromCart(item);
+    } 
     this.cartService.updateInCart(item, qty);
   }
 

@@ -9,6 +9,16 @@
                     severity="danger" 
                     (onClick)="removeFromCart(item)"
                 />
+                <p-button 
+                ariaLabel="Reduce" 
+                icon="pi pi-minus-circle"  
+                (onClick)="onQuantitySelected(item, item.quantity - 1)"
+                />
+                <p-button 
+                ariaLabel="Add" 
+                icon="pi pi-plus-circle"  
+                (onClick)="onQuantitySelected(item, item.quantity + 1)"
+                />
             </div>
         }
     </div>

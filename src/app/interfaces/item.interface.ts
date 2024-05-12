@@ -1,4 +1,4 @@
-export interface CartItem {
+export interface Item {
     id: string;
     categoryId: string;
     categoryName: string;

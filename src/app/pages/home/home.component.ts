@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   cartService = inject(CartService);
   router = inject(Router);
 
-  items: MenuItem[] | undefined;
+  menuItems: MenuItem[] | undefined;
   groupedItemsMap$: Observable<Map<string, any[]>> | undefined = undefined;
 
   ngOnInit() {
@@ -48,7 +48,9 @@ export class HomeComponent implements OnInit {
     // then you wouldn't have to use `/home` in the routes
     // but the icons need to be on the same level and not hidden
     // need to investigate more
-    this.items = [
+    // badge property -> don't think that works.  If it did, would need to use effect to
+    // change groupedItemsMap to a signal.   
+    this.menuItems = [
       {
         label: 'Home',
         icon: 'pi pi-list',
