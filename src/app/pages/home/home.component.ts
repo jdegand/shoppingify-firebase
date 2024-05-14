@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AsyncPipe, JsonPipe, KeyValuePipe, NgFor, NgIf, TitleCasePipe } from '@angular/common';
 import { TieredMenuModule } from 'primeng/tieredmenu';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { ItemFirebaseService } from '../../services/item/item-firebase.service';
 import { SplitterModule } from 'primeng/splitter';
@@ -11,11 +11,14 @@ import { ButtonModule } from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CartService } from '../../services/cart/cart.service';
 import { Observable, map } from 'rxjs';
+import { ToastModule } from "primeng/toast";
+import { Item } from '../../interfaces/item.interface';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe, SplitterModule, CardModule, TitleCasePipe, ButtonModule, ScrollPanelModule],
+  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe, SplitterModule, CardModule, TitleCasePipe, ButtonModule, ScrollPanelModule, ToastModule],
+  providers: [MessageService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -23,23 +26,25 @@ export class HomeComponent implements OnInit {
   itemFirebaseService = inject(ItemFirebaseService);
   authService = inject(AuthService);
   cartService = inject(CartService);
+  messageService = inject(MessageService);
   router = inject(Router);
 
   menuItems: MenuItem[] | undefined;
-  groupedItemsMap$: Observable<Map<string, any[]>> | undefined = undefined;
+  groupedItemsMap$: Observable<Map<string, Item[]>> | undefined = undefined;
 
   ngOnInit() {
     this.groupedItemsMap$ = this.itemFirebaseService.getItems().pipe(
-      map((items: any) => {
-        const map = new Map<string, any[]>();
+      map((items: any) => { // return type of DocumentData
+        const map = new Map<string, Item[]>();
 
-        items.forEach((item: any) => {
-          if (!map.has(item.categoryName)) {
+        items.forEach((item: Item) => {
+          if (!map.has(item?.categoryName?.toLowerCase())) {
             map.set(item.categoryName, []);
           }
           map.get(item.categoryName)?.push(item);
         });
 
+        console.log('map', map);
         return map;
       })
     )
@@ -97,9 +102,13 @@ export class HomeComponent implements OnInit {
     ];
   }
 
-  addToCart(item: any) {
+  addToCart(item: Item) {
+    // could use a variable to transform name to titlecase for the message
     console.log('clicked', item);
     this.cartService.addToCart(item);
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: item.name + " added" });
+    // navigate to the cart route as well ?  Would work fine on desktop, but not good idea for mobile
+    // this.router.navigate(['/home/cart']);
   }
 
 }

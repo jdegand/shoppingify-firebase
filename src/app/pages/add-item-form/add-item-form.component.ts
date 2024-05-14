@@ -31,6 +31,9 @@ export class AddItemFormComponent implements OnInit {
     // get the categories with API request and use that here
     // necessary to have category id ?
 
+    // using this formgroup like this
+    // causes problem with category being a nested object
+    // flatten the data and send back a stringified FormData object?  
     this.formGroup = this.fb.group({
       name: ["", Validators.required],
       note: [""],
