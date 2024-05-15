@@ -36,7 +36,7 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - Use a router-outlet for the cart and the new item form?  An advantage of using router outlet would be always having a correct URL path.
 - The original DevChallenges design does not take into account mobile design.  Having separate URL paths would help translate the design to mobile.
 - Used CSS layers to have a CSS reset without overwriting the PrimeNG component styles.  
-- Could use nested document references for the category field.  Since I always need that data, I don't think that would be a good idea.  I need more into populating document references with Firebase, but it doesn't seem as easy as Mongoose with its `populate` function.  
+- Could use nested document references for the category field.  Since I always need that data, I don't think that would be a good idea.  I need to look more into populating document references with Firebase, but it doesn't seem as easy as Mongoose with its `populate` function.
 
 ## Continued Development
 

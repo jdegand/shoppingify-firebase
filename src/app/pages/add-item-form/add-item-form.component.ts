@@ -25,19 +25,16 @@ export class AddItemFormComponent implements OnInit {
 
   ngOnInit() {
 
-    this.categoryFirebaseService.getCategories().subscribe((data: DocumentData)=> {
+    this.categoryFirebaseService.getCategories().subscribe((data: DocumentData) => {
       this.categories = data as CategoriesResponse[];
+      // causes problem with category being a nested object
+      // worked around it by changing the object sent to firebase
     })
-    // get the categories with API request and use that here
-    // necessary to have category id ?
 
-    // using this formgroup like this
-    // causes problem with category being a nested object
-    // flatten the data and send back a stringified FormData object?  
     this.formGroup = this.fb.group({
       name: ["", Validators.required],
       note: [""],
-      url: [""],
+      url: [""], // need a regex to make sure it's a url
       category: ["", Validators.required],
     });
   }
@@ -45,8 +42,36 @@ export class AddItemFormComponent implements OnInit {
   onSubmit() {
     console.log(this.formGroup);
 
-    if(this.formGroup.valid){
-      this.itemFirebaseService.addItem(this.formGroup.value);
+    if (this.formGroup.valid) {
+
+      /*
+      // passing formData causes an error when you pass the data to firebase 
+
+      const formData = new FormData();
+      formData.append("name", this.formGroup.get("name")?.value);
+      formData.append("note", this.formGroup.get("note")?.value);
+      formData.append("url", this.formGroup.get("url")?.value);
+      formData.append("categoryName", this.formGroup.get("category")?.value?.name);
+      formData.append("categoryId", this.formGroup.get("category")?.value?.id);
+      */
+
+      // `const` just means the object can't be renamed
+      const formObject = {
+        name: "",
+        note: "",
+        url: "",
+        categoryName: "",
+        categoryId: ""
+      };
+
+      formObject.name = this.formGroup.get("name")?.value;
+      formObject.note = this.formGroup.get("note")?.value;
+      formObject.url = this.formGroup.get("url")?.value;
+      formObject.categoryName = this.formGroup.get("category")?.value?.name;
+      formObject.categoryId = this.formGroup.get("category")?.value?.id;
+
+      this.itemFirebaseService.addItem(formObject);
+
     }
 
   }
