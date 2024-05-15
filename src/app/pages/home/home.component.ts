@@ -13,11 +13,17 @@ import { CartService } from '../../services/cart/cart.service';
 import { Observable, map } from 'rxjs';
 import { ToastModule } from "primeng/toast";
 import { Item } from '../../interfaces/item.interface';
+import { TooltipModule } from 'primeng/tooltip';
+import { FormsModule } from '@angular/forms';
+import { NameFilterPipe } from '../../pipes/name-filter.pipe';
+import { InputTextModule } from 'primeng/inputtext';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe, SplitterModule, CardModule, TitleCasePipe, ButtonModule, ScrollPanelModule, ToastModule],
+  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe, SplitterModule, CardModule, TitleCasePipe, ButtonModule, ScrollPanelModule, ToastModule, TooltipModule, FormsModule, NameFilterPipe, InputTextModule, IconFieldModule, InputIconModule],
   providers: [MessageService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -28,6 +34,8 @@ export class HomeComponent implements OnInit {
   cartService = inject(CartService);
   messageService = inject(MessageService);
   router = inject(Router);
+
+  searchTerm!: string;
 
   menuItems: MenuItem[] | undefined;
   groupedItemsMap$: Observable<Map<string, Item[]>> | undefined = undefined;
