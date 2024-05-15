@@ -37,6 +37,8 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - The original DevChallenges design does not take into account mobile design.  Having separate URL paths would help translate the design to mobile.
 - Used CSS layers to have a CSS reset without overwriting the PrimeNG component styles.  
 - Could use nested document references for the category field.  Since I always need that data, I don't think that would be a good idea.  I need to look more into populating document references with Firebase, but it doesn't seem as easy as Mongoose with its `populate` function.
+- Firebase doesn't recommend saving arrays.  I would want to save an array of items and a name for the shopping list object.  In the prior app, past shopping lists are not allowed to be updated so the drawbacks of arrays really does not apply.  
+- When the input loses focus, there will text overlap caused by the PrimeNG `FloatLabel`.  Might replace it or look into maintaining focus on the input if there is any text in the input.   
 
 ## Continued Development
 
@@ -79,3 +81,4 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - [YouTube](https://www.youtube.com/watch?v=6W6gycuhiN0&t=4110s) - Signals Unleashed: The Full Guide
 - [Github](https://github.com/DeborahK/Angular-Signals) - Angular Signals
 - [YouTube](https://www.youtube.com/watch?v=BepIvG91GzM&t=494s) - How I imported a local JSON into a Firestore collection.
+- [Stack Overflow](https://stackoverflow.com/questions/42041531/save-array-of-object-to-firebase-without-getting-0-1-2-as-key) - save array of object to firebase without getting 0 1 2 as key

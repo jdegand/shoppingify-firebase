@@ -1,32 +1,29 @@
 @if(cartItems().length) {
-    <div>
-        @for(item of cartItems(); track item){
-            <div class="flex">
-                <p>{{item.name | titlecase}} : {{item.quantity}}</p>
-                <p-button 
-                    ariaLabel="Delete" 
-                    icon="pi pi-trash" 
-                    severity="danger" 
-                    (onClick)="removeFromCart(item)"
-                />
-                <p-button 
-                ariaLabel="Reduce" 
-                icon="pi pi-minus-circle"  
-                (onClick)="onQuantitySelected(item, item.quantity - 1)"
-                />
-                <p-button 
-                ariaLabel="Add" 
-                icon="pi pi-plus-circle"  
-                (onClick)="onQuantitySelected(item, item.quantity + 1)"
-                />
-            </div>
-        }
+<div>
+    @for(item of cartItems(); track item){
+    <div class="flex">
+        <p>{{item.name | titlecase}} : {{item.quantity}}</p>
+        <p-button ariaLabel="Delete" icon="pi pi-trash" severity="danger" (onClick)="removeFromCart(item)" />
+        <p-button ariaLabel="Reduce" icon="pi pi-minus-circle"
+            (onClick)="onQuantitySelected(item, item.quantity - 1)" />
+        <p-button ariaLabel="Add" icon="pi pi-plus-circle" (onClick)="onQuantitySelected(item, item.quantity + 1)" />
     </div>
-    <div>
-        <p-button label="Clear Cart" (onClick)="clear()" />
-    </div>
+    }
+</div>
+<div>
+    <p-button label="Clear Cart" (onClick)="clear()" />
+</div>
+<br>
+<br>
+<div class="flex">
+    <p-floatLabel>
+        <input id="listname" type="text" pInputText [(ngModel)]="listName" />
+        <label for="listname">Enter a list name</label>
+    </p-floatLabel>
+    <p-button label="Save" (onClick)="saveList()" />
+</div>
 } @else {
-    <div>
-        <p>Cart is empty.</p>
-    </div>
+<div>
+    <p>Cart is empty.</p>
+</div>
 }

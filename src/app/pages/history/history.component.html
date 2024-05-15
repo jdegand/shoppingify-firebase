@@ -1,1 +1,3 @@
-<p>history works!</p>
+<ng-container *ngIf="lists$ | async as list">
+    <p>{{list | json}}</p>
+</ng-container>
