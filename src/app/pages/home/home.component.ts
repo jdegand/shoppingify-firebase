@@ -51,8 +51,7 @@ export class HomeComponent implements OnInit {
           }
           map.get(item.categoryName)?.push(item);
         });
-
-        console.log('map', map);
+        
         return map;
       })
     )
