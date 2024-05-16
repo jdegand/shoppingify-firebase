@@ -49,6 +49,14 @@ export const routes: Routes = [
             (m) => m.StatsComponent,
           ),
       },
+      {
+        path: "detail/:id",
+        title: "Details",
+        loadComponent: () =>
+          import("./pages/detail/detail.component").then(
+            (m) => m.DetailComponent,
+          ),
+      },
     ]
   },
   { path: "", redirectTo: "login", pathMatch: "full" },

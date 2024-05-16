@@ -82,3 +82,4 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - [Github](https://github.com/DeborahK/Angular-Signals) - Angular Signals
 - [YouTube](https://www.youtube.com/watch?v=BepIvG91GzM&t=494s) - How I imported a local JSON into a Firestore collection.
 - [Stack Overflow](https://stackoverflow.com/questions/42041531/save-array-of-object-to-firebase-without-getting-0-1-2-as-key) - save array of object to firebase without getting 0 1 2 as key
+- [Stack Overflow](https://stackoverflow.com/questions/48446261/force-routerlink-to-refresh-component) - force routerlink to refresh component

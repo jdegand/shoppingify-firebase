@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
 import { from } from 'rxjs';
 
 @Injectable({
@@ -20,6 +20,12 @@ export class ItemFirebaseService {
     const promise = addDoc(this.itemsCollection, newItem).then(
       (response:any) => response // message service notification here?
     );
+    return from(promise);
+  }
+
+  getItemById(id: string) {
+    const docRef = doc(this.firestore, 'items/' + id);
+    const promise = getDoc(docRef);
     return from(promise);
   }
 
