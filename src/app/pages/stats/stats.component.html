@@ -1,1 +1,4 @@
-<p>stats works!</p>
+<h1>Stats</h1>
+<ng-container *ngIf="lists$ | async as list">
+    <p>{{list | json}}</p>
+</ng-container>
