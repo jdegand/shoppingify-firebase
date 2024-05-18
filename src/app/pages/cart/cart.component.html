@@ -13,6 +13,11 @@
 <div>
     <p-button label="Clear Cart" (onClick)="clear()" />
 </div>
+} @else {
+<div>
+    <p>Cart is empty.</p>
+</div>
+}
 <br>
 <br>
 <div class="flex">
@@ -20,10 +25,5 @@
         <input id="listname" type="text" pInputText [(ngModel)]="listName" />
         <label for="listname">Enter a list name</label>
     </p-floatLabel>
-    <p-button label="Save" (onClick)="saveList()" />
+    <p-button label="Save" (onClick)="saveList()" [loading]="isLoading" [disabled]="cartItems().length === 0" />
 </div>
-} @else {
-<div>
-    <p>Cart is empty.</p>
-</div>
-}

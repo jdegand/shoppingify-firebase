@@ -20,6 +20,7 @@ export class CartComponent {
   cartItems = this.cartService.cartItems;
 
   listName: string | undefined;
+  isLoading = false;
 
   onQuantitySelected(item: Item, qty: number) {
     if (qty === 0) {
@@ -37,7 +38,10 @@ export class CartComponent {
   }
 
   saveList() {
-    if (this.listName) {
+    const cartItems = this.cartItems();
+
+    if (this.listName && cartItems.length) {
+      this.isLoading = true;
  
       const listObject = {
         name: "",
@@ -45,12 +49,20 @@ export class CartComponent {
         date: new Date() // need to look more into firebase timestamps
       }
 
-      const cartItems = this.cartItems();
-
       listObject.name = this.listName;
       listObject.items = cartItems;
 
-      this.shoppingListFirebaseService.addList(listObject);
+      this.shoppingListFirebaseService.addList(listObject).subscribe({
+        next: () => {
+          this.cartService.emptyCart();
+          this.listName = "";
+          // message service?
+        },
+        error: (err) => {
+          console.log('error', err)
+        },
+        complete: () => this.isLoading = false
+      })
     } 
   }
 
