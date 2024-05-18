@@ -38,7 +38,10 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - Used CSS layers to have a CSS reset without overwriting the PrimeNG component styles.  
 - Could use nested document references for the category field.  Since I always need that data, I don't think that would be a good idea.  I need to look more into populating document references with Firebase, but it doesn't seem as easy as Mongoose with its `populate` function.
 - Firebase doesn't recommend saving arrays.  I would want to save an array of items and a name for the shopping list object.  In the prior app, past shopping lists are not allowed to be updated so the drawbacks of arrays really does not apply.  
-- When the input loses focus, there will be text overlap caused by the PrimeNG `FloatLabel`.  Might look into replacing it or maintaining focus on the input when there is any text in the input.   
+- If I were to allow lists to be edited, I would need to change how I am saving the list items.  Then a user can update the status of an item (purchased or not).
+- When the input loses focus, there will be text overlap caused by the PrimeNG `FloatLabel`.  Might look into replacing it or maintaining focus on the input when there is any text in the input.
+- I included a simple bar chart to see the total amount of items needed from all lists.  
+- I need to look into filtering items based on saved list date.  
 
 ## Continued Development
 
@@ -48,6 +51,7 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - ESLint
 - Tests
 - Replace `getRawValue` in the register and login submit functions?  
+- Lists need a status -> active or completed.
 
 ## Useful Resources
 

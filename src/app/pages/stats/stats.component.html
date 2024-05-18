@@ -1,4 +1,7 @@
-<h1>Stats</h1>
 <ng-container *ngIf="lists$ | async as list">
-    <p>{{list | json}}</p>
+    <h1>Stats</h1>
+    <h2>Most Needed Items</h2>
+    <div class="card">
+        <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+    </div>
 </ng-container>

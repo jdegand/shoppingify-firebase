@@ -6,4 +6,5 @@ export interface Item {
     note: string;
     quantity: number;
     url: string;
+    // purchased: boolean
 }
