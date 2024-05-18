@@ -42,11 +42,12 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - When the input loses focus, there will be text overlap caused by the PrimeNG `FloatLabel`.  Might look into replacing it or maintaining focus on the input when there is any text in the input.
 - I included a simple bar chart to see the total amount of items needed from all lists.  
 - I need to look into filtering items based on saved list date.  
+- AngularFire documentation is quite poor.  Issues have been filed, but not much has been done in years.  Issues get closed and the documentation stays outdated.  Even the official firebase website documentation seems outdated. 
+- This [issue about documentation](https://github.com/angular/angularfire/issues/3110) opened in 2022 does not even seemed to have been looked at by a core maintainer.  This [issue](https://github.com/angular/angularfire/issues/3446) makes it plain that Google is not treating AngularFire as a core library.
 
 ## Continued Development
 
-- PrimeFlex?  Using CDN temporarily -> if I keep it, I will install it properly. 
-- Guards
+- PrimeFlex?  Using CDN temporarily -> if I keep it, I will install it properly.
 - TypeScript fixes
 - ESLint
 - Tests
@@ -87,3 +88,5 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - [YouTube](https://www.youtube.com/watch?v=BepIvG91GzM&t=494s) - How I imported a local JSON into a Firestore collection.
 - [Stack Overflow](https://stackoverflow.com/questions/42041531/save-array-of-object-to-firebase-without-getting-0-1-2-as-key) - save array of object to firebase without getting 0 1 2 as key
 - [Stack Overflow](https://stackoverflow.com/questions/48446261/force-routerlink-to-refresh-component) - force routerlink to refresh component
+- [Github](https://github.com/angular/angularfire/blob/master/site/src/auth/route-guards.md) - angularfire route guards
+- [Dev.to](https://dev.to/jdgamble555/angular-12-with-firebase-9-49a0) - angular 12 with firebase 9
