@@ -1,0 +1,7 @@
+<p>history-detail works!</p>
+
+<div>id: {{ id }}</div>
+
+<ng-container *ngIf="item$ | async as item">
+    <p>{{item._document.data | json}}</p>
+</ng-container>

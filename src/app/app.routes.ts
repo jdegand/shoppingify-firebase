@@ -45,6 +45,13 @@ export const routes: Routes = [
           import("./pages/history/history.component").then(
             (m) => m.HistoryComponent,
           ),
+        children: [
+          {
+            path: ":id",
+            title: "List details",
+            loadComponent: () => import("./pages/history-detail/history-detail.component").then((m) => m.HistoryDetailComponent),
+          }
+        ]
       },
       {
         path: "stats",

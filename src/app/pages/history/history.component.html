@@ -1,3 +1,14 @@
-<ng-container *ngIf="lists$ | async as list">
-    <p>{{list | json}}</p>
-</ng-container>
+<div *ngIf="!isChildComponentActive">
+    <ng-container *ngIf="lists$ | async as lists">
+        <!--<p>{{lists | json}}</p>-->
+        <ul>
+        @for (list of lists; track list.id) {
+            <li><a href="/home/history/{{list.id}}">{{ list.name }}</a></li>
+            <li>{{ list.items.length }} items</li>
+            <li>{{ list.date }}</li>
+        }
+        </ul>
+    </ng-container>
+</div>
+
+<router-outlet></router-outlet>
