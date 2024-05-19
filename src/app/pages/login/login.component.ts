@@ -27,13 +27,11 @@ export class LoginComponent {
   onSubmit(): void {
     if(this.form.valid){
       this.authService.login(this.form.getRawValue()).subscribe({
-        next: (data)=> {
-          console.log('data', data);
+        next: ()=> {
           this.router.navigateByUrl("/home");
           this.form.reset();
         },
         error: (err) => {
-          console.log('err', err);
           this.errorMessage = err.message;
         }
       })

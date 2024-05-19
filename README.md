@@ -32,13 +32,14 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - You can't use a `title` attribute for a tooltip either.  See this [Github issue](https://github.com/primefaces/primeng/issues/14217).
 - `Object.keys` does not work inside an Angular template.
 - Could use a sidepanel or a modal for the new item form.  
-- Since I am using a dropdown for the category input and it is the last input of the form, it might not be good to use a modal for the form.
+- Since I am using a dropdown for the category input and it is the last input of the form, it might not be a good idea to use a modal for the form.
 - Use a router-outlet for the cart and the new item form?  An advantage of using router outlet would be always having a correct URL path.
 - The original DevChallenges design does not take into account mobile design.  Having separate URL paths would help translate the design to mobile.
 - Used CSS layers to have a CSS reset without overwriting the PrimeNG component styles.  
+- Passing a formData object as a payload to Firebase does not work.  I changed to pass a plain object.
 - Could use nested document references for the category field.  Since I always need that data, I don't think that would be a good idea.  I need to look more into populating document references with Firebase, but it doesn't seem as easy as Mongoose with its `populate` function.
 - Firebase doesn't recommend saving arrays.  I would want to save an array of items and a name for the shopping list object.  In the prior app, past shopping lists are not allowed to be updated so the drawbacks of arrays really does not apply.  
-- If I were to allow lists to be edited, I would need to change how I am saving the list items.  Then a user can update the status of an item (purchased or not).
+- If I were to allow lists to be edited, I would need to change how I am saving the list items.  Then a user can update the status of an item (purchased or not). 
 - When the input loses focus, there will be text overlap caused by the PrimeNG `FloatLabel`.  Might look into replacing it or maintaining focus on the input when there is any text in the input.
 - I included a simple bar chart to see the total amount of items needed from all lists.  
 - I need to look into filtering items based on saved list date.  

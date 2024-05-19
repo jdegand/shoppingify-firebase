@@ -111,7 +111,6 @@ export class HomeComponent implements OnInit {
 
   addToCart(item: Item) {
     // could use a variable to transform name to titlecase for the message
-    console.log('clicked', item);
     this.cartService.addToCart(item);
     this.messageService.add({ severity: 'success', summary: 'Success', detail: item.name + " added" });
     // navigate to the cart route as well ?  Would work fine on desktop, but not good idea for mobile

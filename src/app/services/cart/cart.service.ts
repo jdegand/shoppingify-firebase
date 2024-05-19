@@ -1,16 +1,15 @@
 import { Injectable, signal } from '@angular/core';
+import { Item } from '../../interfaces/item.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  cartItems = signal<any[]>([]);
+  cartItems = signal<Item[]>([]);
 
-  addToCart(item: any): void {
+  addToCart(item: Item): void {
     // Check if the item is already in the cart
     const cartItem = this.cartItems().find(i => i.name === item.name);
-
-    console.log('cartItem', cartItem);
 
     if (cartItem) {
       // Update the quantity
@@ -19,7 +18,6 @@ export class CartService {
       // Add the item to the cart
       // Use update and not mutate because it's replacing the array, not updating an element
       this.cartItems.update((items) => [...items, { ...item, quantity: 1 }]);
-      console.log('added', this.cartItems());
     }
   }
 
@@ -28,14 +26,14 @@ export class CartService {
   }
 
   // Remove the item from the cart
-  removeFromCart(cartItem: any): void {
+  removeFromCart(cartItem: Item): void {
     // Use update and not mutate because it's replacing the array, not updating an element
     this.cartItems.update((items) =>
       items.filter((i) => i.name !== cartItem.name)
     );
   }
 
-  updateInCart(cartItem: any, quantity: number) {
+  updateInCart(cartItem: Item, quantity: number) {
     this.cartItems.update((items) =>
       items.map((item) =>
         item.name === cartItem.name

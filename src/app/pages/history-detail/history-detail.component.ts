@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ShoppingListFirebaseService } from '../../services/shopping-list/shopping-list-firebase.service';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 
 @Component({
@@ -21,7 +21,7 @@ export class HistoryDetailComponent {
   route = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: any) => {
+    this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.item$ = this.shoppingListFirebaseService.getListById(this.id);
     });

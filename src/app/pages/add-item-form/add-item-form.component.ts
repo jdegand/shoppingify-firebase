@@ -45,24 +45,15 @@ export class AddItemFormComponent implements OnInit {
 
       this.isLoading = true;
 
-      /*
-      // passing formData causes an error when you pass the data to firebase 
-
-      const formData = new FormData();
-      formData.append("name", this.formGroup.get("name")?.value);
-      formData.append("note", this.formGroup.get("note")?.value);
-      formData.append("url", this.formGroup.get("url")?.value);
-      formData.append("categoryName", this.formGroup.get("category")?.value?.name);
-      formData.append("categoryId", this.formGroup.get("category")?.value?.id);
-      */
-
       // `const` just means the object can't be renamed
+      // id will be created by firebase
       const formObject = {
         name: "",
         note: "",
         url: "",
         categoryName: "",
-        categoryId: ""
+        categoryId: "",
+        quantity: 0
       };
 
       formObject.name = this.formGroup.get("name")?.value;
