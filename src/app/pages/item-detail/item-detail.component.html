@@ -1,0 +1,8 @@
+<ng-container *ngIf="item$ | async as item">
+    <h1>{{ item._document.data.value.mapValue.fields.name.stringValue }}</h1>
+    <p>Readtime: {{ item._document.readTime.timestamp.seconds * 1000 | date }}</p>
+    <p>Created: {{ item._document.createTime.timestamp.seconds * 1000 | date }}</p>
+    <img *ngIf="item._document.data.value.mapValue.fields.url.stringValue" [src]="item._document.data.value.mapValue.fields.url.stringValue" alt="" width="200" height="200" />
+    <h2>Category: {{ item._document.data.value.mapValue.fields.categoryName.stringValue }}</h2>
+    <h2 *ngIf="item._document.data.value.mapValue.fields.note.stringValue">Note: {{ item._document.data.value.mapValue.fields.note.stringValue }}</h2>
+</ng-container>

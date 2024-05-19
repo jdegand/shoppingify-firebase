@@ -57,6 +57,8 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 
 ## Useful Resources
 
+- [JSON formatter](https://jsonformatter.curiousconcept.com/#)
+- [Picsum](https://picsum.photos/)
 - [Blog](https://piccalil.li/blog/a-more-modern-css-reset/) - CSS Reset
 - [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) - IndexedDB API
 - [YouTube](https://www.youtube.com/watch?v=586O934xrhQ) - Angular Firebase Authentication - Implement Auth in Minutes
