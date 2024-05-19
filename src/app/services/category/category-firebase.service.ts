@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +15,12 @@ export class CategoryFirebaseService {
       idField: 'id'
     }) // as Observable<interface>
   }
+
+  addCategory(category: any){
+    const promise = addDoc(this.categoriesCollection, category).then(
+      (response:any) => response // message service notification here?
+    );
+    return from(promise);
+  }
+
 }

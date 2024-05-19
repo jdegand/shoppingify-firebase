@@ -22,6 +22,7 @@ export class AddItemFormComponent implements OnInit {
   categories: CategoriesResponse[] = [];
 
   formGroup!: FormGroup;
+  isLoading = false;
 
   ngOnInit() {
 
@@ -40,9 +41,9 @@ export class AddItemFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formGroup);
-
     if (this.formGroup.valid) {
+
+      this.isLoading = true;
 
       /*
       // passing formData causes an error when you pass the data to firebase 
@@ -70,7 +71,16 @@ export class AddItemFormComponent implements OnInit {
       formObject.categoryName = this.formGroup.get("category")?.value?.name;
       formObject.categoryId = this.formGroup.get("category")?.value?.id;
 
-      this.itemFirebaseService.addItem(formObject);
+      this.itemFirebaseService.addItem(formObject).subscribe({
+        next: () => {
+          this.formGroup.reset();
+          // message service?
+        },
+        error: (err) => {
+          console.log('error', err)
+        },
+        complete: () => this.isLoading = false
+      });
 
     }
 

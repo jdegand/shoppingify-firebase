@@ -26,7 +26,7 @@
                     <h1><span>Shoppingify</span> allows you to take your shopping list wherever you go</h1>
                     <p-iconField iconPosition="left">
                         <p-inputIcon styleClass="pi pi-search" />
-                        <input pInputText [(ngModel)]="searchTerm" placeholder="Search item">
+                        <input pInputText name="search" [(ngModel)]="searchTerm" placeholder="Search item">
                     </p-iconField>
                     <div *ngFor="let category of (groupedItemsMap$ | async | keyvalue)">
                         <h2>{{ category.key | titlecase }}</h2>

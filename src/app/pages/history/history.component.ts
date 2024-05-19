@@ -20,15 +20,14 @@ export class HistoryComponent {
   isChildComponentActive: boolean = false;
 
   router = inject(Router);
+  route = inject(ActivatedRoute);
 
-  constructor(private route: ActivatedRoute) {
+  ngOnInit(): void {
     this.route.firstChild?.paramMap.subscribe(params => {
       this.isChildComponentActive = params.get('id') ? true : false;
     });
-  }
 
-  ngOnInit(): void {
     this.lists$ = this.shoppingListFirebaseService.getLists();
   }
-
+ 
 }

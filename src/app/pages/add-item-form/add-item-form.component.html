@@ -20,6 +20,6 @@
       <p-dropdown formControlName="category" [options]="categories" optionLabel="name"
         placeholder="Select a Category"></p-dropdown>
     </div>
-    <button pButton type="submit" label="Submit" [disabled]="formGroup.invalid"></button>
+    <button pButton type="submit" label="Submit" [loading]="isLoading" [disabled]="formGroup.invalid"></button>
   </fieldset>
 </form>
