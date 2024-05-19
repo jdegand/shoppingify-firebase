@@ -25,9 +25,9 @@ export class LoginComponent {
   errorMessage: string | null = null;
 
   onSubmit(): void {
-    if(this.form.valid){
+    if (this.form.valid) {
       this.authService.login(this.form.getRawValue()).subscribe({
-        next: ()=> {
+        next: () => {
           this.router.navigateByUrl("/home");
           this.form.reset();
         },

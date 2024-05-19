@@ -23,13 +23,13 @@ export class RegisterComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
-  
+
   errorMessage: string | null = null;
 
   onSubmit(): void {
-    if(this.form.valid){
+    if (this.form.valid) {
       this.authService.register(this.form.getRawValue()).subscribe({
-        next: ()=> {
+        next: () => {
           this.router.navigateByUrl("/");
         },
         error: (err) => {

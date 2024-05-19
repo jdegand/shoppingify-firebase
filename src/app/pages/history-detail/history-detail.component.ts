@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { ShoppingListFirebaseService } from '../../services/shopping-list/shopping-list-firebase.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-history-detail',
   standalone: true,
-  imports: [NgIf, JsonPipe, AsyncPipe],
+  imports: [NgIf, JsonPipe, AsyncPipe, NgFor, DatePipe],
   templateUrl: './history-detail.component.html',
   styleUrl: './history-detail.component.css'
 })

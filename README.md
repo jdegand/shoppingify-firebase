@@ -91,3 +91,4 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - [Stack Overflow](https://stackoverflow.com/questions/48446261/force-routerlink-to-refresh-component) - force routerlink to refresh component
 - [Github](https://github.com/angular/angularfire/blob/master/site/src/auth/route-guards.md) - angularfire route guards
 - [Dev.to](https://dev.to/jdgamble555/angular-12-with-firebase-9-49a0) - angular 12 with firebase 9
+- [Stack Overflow](https://stackoverflow.com/questions/38569832/convert-timestamp-to-date-using-angular-2-pipes) - convert timestamp to date using angular 2 pipes
