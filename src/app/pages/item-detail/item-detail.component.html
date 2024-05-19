@@ -1,8 +1,18 @@
+<p-toast></p-toast>
 <ng-container *ngIf="item$ | async as item">
-    <h1>{{ item._document.data.value.mapValue.fields.name.stringValue }}</h1>
-    <p>Readtime: {{ item._document.readTime.timestamp.seconds * 1000 | date }}</p>
-    <p>Created: {{ item._document.createTime.timestamp.seconds * 1000 | date }}</p>
-    <img *ngIf="item._document.data.value.mapValue.fields.url.stringValue" [src]="item._document.data.value.mapValue.fields.url.stringValue" alt="" width="200" height="200" />
-    <h2>Category: {{ item._document.data.value.mapValue.fields.categoryName.stringValue }}</h2>
-    <h2 *ngIf="item._document.data.value.mapValue.fields.note.stringValue">Note: {{ item._document.data.value.mapValue.fields.note.stringValue }}</h2>
+    <div class="flex">
+        <p>Readtime: {{ item._document.readTime.timestamp.seconds * 1000 | date: 'shortDate' }}</p>
+        <p>Created: {{ item._document.createTime.timestamp.seconds * 1000 | date: 'shortDate' }}</p>
+    </div>
+    <img *ngIf="item._document.data.value.mapValue.fields.url.stringValue"
+        [src]="item._document.data.value.mapValue.fields.url.stringValue" alt="" width="200" height="200" />
+    <dl>
+        <dt>Name</dt>
+        <dd>{{ item._document.data.value.mapValue.fields.name.stringValue }}</dd>
+        <dt>Category</dt>
+        <dd>{{ item._document.data.value.mapValue.fields.categoryName.stringValue }}</dd>
+        <dt *ngIf="item._document.data.value.mapValue.fields.note.stringValue">Note</dt>
+        <dd *ngIf="item._document.data.value.mapValue.fields.note.stringValue">{{ item._document.data.value.mapValue.fields.note.stringValue }}</dd>
+    </dl>
+    <p-button label="Add to cart" (onClick)="addToCart(item._document.data.value.mapValue.fields)" />
 </ng-container>
