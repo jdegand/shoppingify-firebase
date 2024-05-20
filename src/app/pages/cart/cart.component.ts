@@ -50,7 +50,7 @@ export class CartComponent {
       const listObject = {
         name: "",
         items: [] as Item[],
-        date: new Date() // need to look more into firebase timestamps
+        date: new Date() // might not be necessary -> can get readTime / createdTime from firebase
       }
 
       listObject.name = this.listName;

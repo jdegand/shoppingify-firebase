@@ -19,7 +19,7 @@ export class ItemFirebaseService {
 
   addItem(newItem: Item) {
     const promise = addDoc(this.itemsCollection, newItem).then(
-      (response: DocumentReference) => { return response} 
+      (response: DocumentReference) => response 
     );
     return from(promise);
   }

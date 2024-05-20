@@ -15,6 +15,8 @@ export class HistoryComponent implements OnInit {
 
   shoppingListFirebaseService = inject(ShoppingListFirebaseService);
 
+  // can't use List -> because of list.date.seconds in template
+  // change date property of list?  
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   lists$: Observable<any> | undefined;
 

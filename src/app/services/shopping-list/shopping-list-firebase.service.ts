@@ -19,7 +19,7 @@ export class ShoppingListFirebaseService {
 
   addList(newItem: List) { 
     const promise = addDoc(this.listsCollection, newItem).then(
-      (response: DocumentReference) => { return response; } 
+      (response: DocumentReference) => response 
     );
     return from(promise);
   }

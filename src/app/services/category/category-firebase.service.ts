@@ -18,7 +18,7 @@ export class CategoryFirebaseService {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  addCategory(category: any) {
+  addCategory(category: any) { // object
     const promise = addDoc(this.categoriesCollection, category).then(
       (response: DocumentReference) => { return response; }
     );

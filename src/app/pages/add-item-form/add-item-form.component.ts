@@ -6,11 +6,14 @@ import { ItemFirebaseService } from '../../services/item/item-firebase.service';
 import { CategoryFirebaseService } from '../../services/category/category-firebase.service';
 import { CategoriesResponse } from '../../interfaces/categories-response.interface';
 import { DocumentData } from '@angular/fire/firestore';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-add-item-form',
   standalone: true,
-  imports: [ReactiveFormsModule, DropdownModule, ButtonModule],
+  imports: [ReactiveFormsModule, DropdownModule, ButtonModule, ToastModule],
+  providers: [MessageService],
   templateUrl: './add-item-form.component.html',
   styleUrl: './add-item-form.component.css'
 })
@@ -18,6 +21,7 @@ export class AddItemFormComponent implements OnInit {
   fb = inject(FormBuilder);
   itemFirebaseService = inject(ItemFirebaseService);
   categoryFirebaseService = inject(CategoryFirebaseService);
+  messageService = inject(MessageService);
 
   categories: CategoriesResponse[] = [];
 
@@ -64,11 +68,11 @@ export class AddItemFormComponent implements OnInit {
 
       this.itemFirebaseService.addItem(formObject).subscribe({
         next: () => {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: formObject.name + " saved" });
           this.formGroup.reset();
-          // message service?
         },
         error: (err) => {
-          console.log('error', err)
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
         },
         complete: () => this.isLoading = false
       });
