@@ -3,6 +3,7 @@ import { ShoppingListFirebaseService } from '../../services/shopping-list/shoppi
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgIf, DatePipe } from '@angular/common';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { List } from '../../interfaces/list.interface';
 
 @Component({
   selector: 'app-history',
@@ -15,10 +16,8 @@ export class HistoryComponent implements OnInit {
 
   shoppingListFirebaseService = inject(ShoppingListFirebaseService);
 
-  // can't use List -> because of list.date.seconds in template
-  // change date property of list?  
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  lists$: Observable<any> | undefined;
+  // couldn't use List until I changed date property
+  lists$: Observable<List[]> | undefined;
 
   isChildComponentActive: boolean = false;
 

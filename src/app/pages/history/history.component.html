@@ -4,7 +4,9 @@
         @for (list of lists; track list.id) {
             <li><a href="/home/history/{{list.id}}">{{ list.name }}</a></li>
             <li>{{ list.items.length }} items</li>
-            <li>{{ list.date.seconds * 1000 | date }}</li>
+            @if(list.date){
+                <li>{{ list.date.seconds * 1000 | date }}</li>
+            }
         }
         </ul>
     </ng-container>

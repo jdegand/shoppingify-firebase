@@ -50,7 +50,10 @@ export class CartComponent {
       const listObject = {
         name: "",
         items: [] as Item[],
-        date: new Date() // might not be necessary -> can get readTime / createdTime from firebase
+        // date: new Date() // might not be necessary -> can get readTime / createdTime from firebase
+        // can't get nanoseconds from date object in js  const date = new Date();
+        // cant set date obj like date: {seconds: date.getSeconds(), nanoseconds: date.milliseconds()} 
+        // firebase nanoseconds really milliseconds?
       }
 
       listObject.name = this.listName;

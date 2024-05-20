@@ -4,5 +4,8 @@ export interface List {
     id?: string;
     name: string;
     items: Item [];
-    date: Date;
+    date?: {
+        seconds: number;
+        nanoseconds: number;
+    };
 }
