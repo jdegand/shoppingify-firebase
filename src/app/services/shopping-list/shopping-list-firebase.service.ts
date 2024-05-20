@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, addDoc, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
 import { Observable, from } from 'rxjs';
 import { List } from '../../interfaces/list.interface';
 
@@ -19,8 +19,7 @@ export class ShoppingListFirebaseService {
 
   addList(newItem: List) { 
     const promise = addDoc(this.listsCollection, newItem).then(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (response: any) => {console.log('addList response', response); return response} 
+      (response: DocumentReference) => { return response; } 
     );
     return from(promise);
   }
