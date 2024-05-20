@@ -19,7 +19,7 @@
         <br>
         <input id="password" type="password" formControlName="password" pInputText class="w-full mb-3">
         <br>
-        <button pButton pRipple label="Join" [disabled]="form.invalid"></button>
+        <button pButton pRipple [disabled]="form.invalid">Join</button>
     </form>
     @if (errorMessage) {
         <div>{{ errorMessage }}</div>

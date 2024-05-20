@@ -45,12 +45,12 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - I need to look into filtering items based on saved list date.  
 - AngularFire documentation is quite poor.  Issues have been filed, but not much has been done in years.  Issues get closed and the documentation stays outdated.  Even the official firebase website documentation seems outdated. 
 - This [issue about documentation](https://github.com/angular/angularfire/issues/3110) opened in 2022 does not even seemed to have been looked at by a core maintainer.  This [issue](https://github.com/angular/angularfire/issues/3446) makes it plain that Google is not treating AngularFire as a core library.
+- With PrimeNG buttons, you don't have to put content inside the button and can use an attribute to add button text.  This is fine, but ESLint complains when buttons do not have content.
 
 ## Continued Development
 
 - PrimeFlex?  Using CDN temporarily -> if I keep it, I will install it properly.
 - TypeScript fixes
-- ESLint
 - Tests
 - Replace `getRawValue` in the register and login submit functions?  
 - Lists need a status -> active or completed.

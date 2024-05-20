@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.groupedItemsMap$ = this.itemFirebaseService.getItems().pipe(
-      map((items: any) => { // return type of DocumentData
+      map((items: Item[]) => {
         const map = new Map<string, Item[]>();
 
         items.forEach((item: Item) => {

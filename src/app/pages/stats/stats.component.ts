@@ -1,8 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { ShoppingListFirebaseService } from '../../services/shopping-list/shopping-list-firebase.service';
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { ChartModule } from 'primeng/chart';
+import { Item } from '../../interfaces/item.interface';
+import { List } from '../../interfaces/list.interface';
+import { StatsResult } from '../../interfaces/stats-result.interface';
 
 @Component({
   selector: 'app-stats',
@@ -11,13 +14,15 @@ import { ChartModule } from 'primeng/chart';
   templateUrl: './stats.component.html',
   styleUrl: './stats.component.css'
 })
-export class StatsComponent {
+export class StatsComponent implements OnInit {
 
   shoppingListFirebaseService = inject(ShoppingListFirebaseService);
-  lists$: Observable<any> | undefined; // document data
+  lists$: Observable<{ name: string; quantity: number; }[]> | undefined;
 
   // don't think you can easily type basicData and basicOptions
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   basicData: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   basicOptions: any;
 
   toTitleCase(str: string) {
@@ -28,16 +33,17 @@ export class StatsComponent {
 
   ngOnInit(): void {
     this.lists$ = this.shoppingListFirebaseService.getLists().pipe(
-      map((data: any) => {
+      map((data: List[]) => {
 
-        const flattenedArray: any = [];
+        const flattenedArray: Item[] = [];
 
         // Loop over the array of objects and push the nested array to the flattened array
-        data.forEach((obj: any) => {
+        data.forEach((obj: List) => {
           flattenedArray.push(...obj.items);
         });
 
-        const reducedItems = flattenedArray.reduce((acc: any, item: any) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const reducedItems = flattenedArray.reduce((acc: any, item: Item) => {
           if (acc[item.name]) {
             acc[item.name] += item.quantity;
           } else {
@@ -49,8 +55,8 @@ export class StatsComponent {
         // Convert the reduced items object to an array of objects
         const result = Object.keys(reducedItems).map(name => ({ name, quantity: reducedItems[name] }));
 
-        const names = result.map((item: any) => this.toTitleCase(item.name));
-        const quantities = result.map((item: any) => item.quantity);
+        const names = result.map((item: StatsResult) => this.toTitleCase(item.name));
+        const quantities = result.map((item: StatsResult) => item.quantity);
 
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');

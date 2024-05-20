@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
-import { from } from 'rxjs';
+import { DocumentReference, Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { Observable, from } from 'rxjs';
+import { CategoriesResponse } from '../../interfaces/categories-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,13 @@ export class CategoryFirebaseService {
   getCategories() {
     return collectionData(this.categoriesCollection, {
       idField: 'id'
-    }) // as Observable<interface>
+    }) as Observable<CategoriesResponse[]>;
   }
 
-  addCategory(category: any){
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  addCategory(category: any) {
     const promise = addDoc(this.categoriesCollection, category).then(
-      (response:any) => response // message service notification here?
+      (response: DocumentReference) => { return response; }
     );
     return from(promise);
   }

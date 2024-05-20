@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ItemFirebaseService } from '../../services/item/item-firebase.service';
@@ -17,10 +17,11 @@ import { Item } from '../../interfaces/item.interface';
   templateUrl: './item-detail.component.html',
   styleUrl: './item-detail.component.css'
 })
-export class ItemDetailComponent {
+export class ItemDetailComponent implements OnInit {
 
   id = "";
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   item$: Observable<any> | undefined;
 
   itemFirebaseService = inject(ItemFirebaseService);

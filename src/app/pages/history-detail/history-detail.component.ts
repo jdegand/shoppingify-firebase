@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ShoppingListFirebaseService } from '../../services/shopping-list/shopping-list-firebase.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -11,11 +11,12 @@ import { AsyncPipe, DatePipe, JsonPipe, NgFor, NgIf } from '@angular/common';
   templateUrl: './history-detail.component.html',
   styleUrl: './history-detail.component.css'
 })
-export class HistoryDetailComponent {
+export class HistoryDetailComponent implements OnInit {
 
   id = "";
 
-  item$: Observable<any> | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  item$: Observable<any> | undefined; // Observable<DocumentSnapshot<DocumentData, DocumentData>>
 
   shoppingListFirebaseService = inject(ShoppingListFirebaseService);
   route = inject(ActivatedRoute);

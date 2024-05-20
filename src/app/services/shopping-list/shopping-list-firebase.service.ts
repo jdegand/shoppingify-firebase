@@ -19,7 +19,8 @@ export class ShoppingListFirebaseService {
 
   addList(newItem: List) { 
     const promise = addDoc(this.listsCollection, newItem).then(
-      (response: any) => response
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (response: any) => {console.log('addList response', response); return response} 
     );
     return from(promise);
   }
