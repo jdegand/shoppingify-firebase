@@ -8,11 +8,12 @@ import { CategoriesResponse } from '../../interfaces/categories-response.interfa
 import { DocumentData } from '@angular/fire/firestore';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-add-item-form',
   standalone: true,
-  imports: [ReactiveFormsModule, DropdownModule, ButtonModule, ToastModule],
+  imports: [ReactiveFormsModule, DropdownModule, ButtonModule, ToastModule, InputTextModule],
   providers: [MessageService],
   templateUrl: './add-item-form.component.html',
   styleUrl: './add-item-form.component.css'

@@ -18,9 +18,12 @@
       <input id="url" type="text" formControlName="url" pInputText>
     </div>
     <div>
-      <p-dropdown formControlName="category" [options]="categories" optionLabel="name"
+      <label for="category">Category</label>
+      <br>
+      <p-dropdown id="category" formControlName="category" [options]="categories" optionLabel="name"
         placeholder="Select a Category"></p-dropdown>
     </div>
+    <br>
     <button pButton type="submit" [loading]="isLoading" [disabled]="formGroup.invalid">Submit</button>
   </fieldset>
 </form>
