@@ -8,11 +8,12 @@ import { Item } from '../../interfaces/item.interface';
 import { ShoppingListFirebaseService } from '../../services/shopping-list/shopping-list-firebase.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [ButtonModule, TitleCasePipe, FormsModule, FloatLabelModule, ToastModule],
+  imports: [ButtonModule, TitleCasePipe, FormsModule, FloatLabelModule, ToastModule, InputTextModule],
   providers: [MessageService],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
