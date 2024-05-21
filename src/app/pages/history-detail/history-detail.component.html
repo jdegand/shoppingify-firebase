@@ -3,12 +3,14 @@
     <p>Readtime: {{ item._document.readTime.timestamp.seconds * 1000 | date }}</p>
     <p>Created: {{ item._document.createTime.timestamp.seconds * 1000 | date }}</p>
     <h2>Items:</h2>
-    <div *ngFor="let item of item._document.data.value.mapValue.fields.items.arrayValue.values">
-        <p>ID: {{ item.mapValue.fields.id.stringValue }}</p>
-        <p>Category Name: {{ item.mapValue.fields.categoryName.stringValue }}</p>
-        <p>Note: {{ item.mapValue.fields.note.stringValue }}</p>
-        <p>Quantity: {{ item.mapValue.fields.quantity.integerValue }}</p>
-        <p>Name: {{ item.mapValue.fields.name.stringValue }}</p>
-        <hr>
-    </div>
+    <p-scrollPanel [style]="{ width: '100%', height: '300px' }">
+        <div *ngFor="let item of item._document.data.value.mapValue.fields.items.arrayValue.values">
+            <p>ID: {{ item.mapValue.fields.id.stringValue }}</p>
+            <p>Category Name: {{ item.mapValue.fields.categoryName.stringValue }}</p>
+            <p>Note: {{ item.mapValue.fields.note.stringValue }}</p>
+            <p>Quantity: {{ item.mapValue.fields.quantity.integerValue }}</p>
+            <p>Name: {{ item.mapValue.fields.name.stringValue }}</p>
+            <hr>
+        </div>
+    </p-scrollPanel>
 </ng-container>

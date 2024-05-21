@@ -46,6 +46,9 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - This [issue about documentation](https://github.com/angular/angularfire/issues/3110) opened in 2022 does not even seemed to have been looked at by a core maintainer.  This [issue](https://github.com/angular/angularfire/issues/3446) makes it plain that Google is not treating AngularFire as a core library.
 - With PrimeNG buttons, you don't have to put content inside the button and can use an attribute to add button text.  This is fine, but ESLint complains when buttons do not have content.
 - Create another service that calls the PrimeNG MessageService and import that verus importing MessageService directly into multiple components?
+- Splitter's minimum sizes array is not working.  See this [Github issue](https://github.com/primefaces/primeng/issues/15637).
+- I used `Splitter` for the layouf of the Home component.  I may convert to a grid.  I could also look into using a `DataView` component.  
+- Custom PrimeNG styling relies on using `ng-deep`.  This could be a maintenance headache in the future if `ng-deep` is ever removed from Angular.  
 
 ## Continued Development
 

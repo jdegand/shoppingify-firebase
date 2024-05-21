@@ -14,6 +14,9 @@ import { List } from '../../interfaces/list.interface';
 })
 export class HistoryComponent implements OnInit {
 
+  // problem when you navigate back from child route using the history link 
+  // in the sidepanel -> the history list doesn't load in
+
   shoppingListFirebaseService = inject(ShoppingListFirebaseService);
 
   // couldn't use List until I changed date property

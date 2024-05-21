@@ -3,11 +3,12 @@ import { ShoppingListFirebaseService } from '../../services/shopping-list/shoppi
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AsyncPipe, DatePipe, JsonPipe, NgFor, NgIf } from '@angular/common';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @Component({
   selector: 'app-history-detail',
   standalone: true,
-  imports: [NgIf, JsonPipe, AsyncPipe, NgFor, DatePipe],
+  imports: [NgIf, JsonPipe, AsyncPipe, NgFor, DatePipe, ScrollPanelModule],
   templateUrl: './history-detail.component.html',
   styleUrl: './history-detail.component.css'
 })

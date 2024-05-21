@@ -19,11 +19,12 @@ import { NameFilterPipe } from '../../pipes/name-filter.pipe';
 import { InputTextModule } from 'primeng/inputtext';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe, SplitterModule, CardModule, TitleCasePipe, ButtonModule, ScrollPanelModule, ToastModule, TooltipModule, FormsModule, NameFilterPipe, InputTextModule, IconFieldModule, InputIconModule],
+  imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe, SplitterModule, CardModule, TitleCasePipe, ButtonModule, ScrollPanelModule, ToastModule, TooltipModule, FormsModule, NameFilterPipe, InputTextModule, IconFieldModule, InputIconModule, DividerModule],
   providers: [MessageService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
