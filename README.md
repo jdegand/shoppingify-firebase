@@ -11,10 +11,10 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 
 ## Thoughts
 
-- Firebase doesn't return observables.  It returns promises. You can convert the response to an Observable with `from`.  Use `toSignal`?   
+- Firebase doesn't return observables.  It returns promises. You can convert the response to an Observable with `from`.  Use `toSignal`?
 - Angular Fire does a lot of the work for you.  
-- Firebase uses `IndexedDB` to store a key to remember the logged-in user. 
-- Cloud Firestore is schemaless.   
+- Firebase uses `IndexedDB` to store a key to remember the logged-in user.
+- Cloud Firestore is schemaless.
 - If you want to delete documents in subcollections when deleting a parent document, you must do so manually.
 - Firebase doesn't return the whole object of newly saved objects.
 - Need to do a lot of planning and prototyping of data structure in Firebase, as you are billed by the number of reads and writes you perform.
@@ -23,10 +23,10 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - Queries find documents in a single collection only.  
 - You can't retrieve a partial document.  
 - You can't easily delete subcollections.  
-- Queries are shallow. 
+- Queries are shallow.
 - Root-level collections are good for many-to-many relationships.
 - PrimeNG has some chart functionality so that is one reason I decided to use it instead of Angular Material.
-- PrimeNG menu components have limited vertical orientation options.  It would be nice to have `orientation` available to all menus, but I believe animations would break if you try to use most menu components in a vertical position. See this [Github discussion](https://github.com/orgs/primefaces/discussions/1134) for the limitations of the `TabMenu` component. 
+- PrimeNG menu components have limited vertical orientation options.  It would be nice to have `orientation` available to all menus, but I believe animations would break if you try to use most menu components in a vertical position. See this [Github discussion](https://github.com/orgs/primefaces/discussions/1134) for the limitations of the `TabMenu` component.
 - `MegaMenu`, `TieredMenu`, and `Dock` can be used vertically.
 - Adding a `tooltip` to `MenuItems` in the `TieredMenu` component does not work?  I looked in the source code and the TieredMenu component has the `pTooltip` directive.  
 - You can't use a `title` attribute for a tooltip either.  See this [Github issue](https://github.com/primefaces/primeng/issues/14217).
@@ -42,7 +42,7 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - If I were to allow lists to be edited, I would need to change how I am saving the list items.  Then a user can update the status of an item (purchased or not).
 - I included a simple bar chart to see the total amount of items needed from all lists.  
 - I need to look into filtering items based on saved list date.  
-- AngularFire documentation is quite poor.  Issues have been filed, but not much has been done in years.  Issues get closed and the documentation stays outdated.  Even the official firebase website documentation seems outdated. 
+- AngularFire documentation is quite poor.  Issues have been filed, but not much has been done in years.  Issues get closed and the documentation stays outdated.  Even the official firebase website documentation seems outdated.
 - This [issue about documentation](https://github.com/angular/angularfire/issues/3110) opened in 2022 does not even seemed to have been looked at by a core maintainer.  This [issue](https://github.com/angular/angularfire/issues/3446) makes it plain that Google is not treating AngularFire as a core library.
 - With PrimeNG buttons, you don't have to put content inside the button and can use an attribute to add button text.  This is fine, but ESLint complains when buttons do not have content.
 - Create another service that calls the PrimeNG MessageService and import that verus importing MessageService directly into multiple components?
@@ -57,6 +57,7 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - Tests
 - Replace `getRawValue` in the register and login submit functions?  
 - Lists need a status -> active or completed.
+- Categories need to created first on Firebase.  You cannot submit the item form without a category.
 
 ## Useful Resources
 
@@ -87,7 +88,7 @@ This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/
 - [Stack Overflow](https://stackoverflow.com/questions/31490713/iterate-over-object-in-angular) - iterate over object in angular
 - [Stack Overflow](https://stackoverflow.com/questions/78023327/how-to-iterate-over-object-in-angular-17-with-new-for) - how to iterate over object in angular 17 with new for
 - [Stack Overflow](https://stackoverflow.com/questions/16174182/typescript-looping-through-a-dictionary) - typescript looping through a dictionary
-- [Stack Overflow](https://stackoverflow.com/questions/47834222/display-map-content-in-angular-4-template) - display map content in angular 4 
+- [Stack Overflow](https://stackoverflow.com/questions/47834222/display-map-content-in-angular-4-template) - display map content in angular 4
 - [Dev.to](https://dev.to/imkrunalkanojiya/firebase-v9-firestore-adddoc-and-setdoc-method-examples-nhe) - firebase v9 firestore adddoc and setdoc method examples
 - [YouTube](https://www.youtube.com/watch?v=6W6gycuhiN0&t=4110s) - Signals Unleashed: The Full Guide
 - [Github](https://github.com/DeborahK/Angular-Signals) - Angular Signals
