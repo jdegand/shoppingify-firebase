@@ -14,8 +14,7 @@ import { Item } from '../../interfaces/item.interface';
   standalone: true,
   imports: [NgIf, JsonPipe, AsyncPipe, DatePipe, ButtonModule, ToastModule],
   providers: [MessageService],
-  templateUrl: './item-detail.component.html',
-  styleUrl: './item-detail.component.css'
+  templateUrl: './item-detail.component.html'
 })
 export class ItemDetailComponent implements OnInit {
 

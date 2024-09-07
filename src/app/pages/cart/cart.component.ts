@@ -15,8 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
   standalone: true,
   imports: [ButtonModule, TitleCasePipe, FormsModule, FloatLabelModule, ToastModule, InputTextModule],
   providers: [MessageService],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  templateUrl: './cart.component.html'
 })
 export class CartComponent {
   shoppingListFirebaseService = inject(ShoppingListFirebaseService);

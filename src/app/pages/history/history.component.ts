@@ -9,8 +9,7 @@ import { List } from '../../interfaces/list.interface';
   selector: 'app-history',
   standalone: true,
   imports: [NgIf, AsyncPipe, RouterOutlet, DatePipe],
-  templateUrl: './history.component.html',
-  styleUrl: './history.component.css'
+  templateUrl: './history.component.html'
 })
 export class HistoryComponent implements OnInit {
 

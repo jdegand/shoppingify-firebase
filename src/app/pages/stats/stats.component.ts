@@ -11,8 +11,7 @@ import { StatsResult } from '../../interfaces/stats-result.interface';
   selector: 'app-stats',
   standalone: true,
   imports: [NgIf, JsonPipe, AsyncPipe, ChartModule],
-  templateUrl: './stats.component.html',
-  styleUrl: './stats.component.css'
+  templateUrl: './stats.component.html'
 })
 export class StatsComponent implements OnInit {
 

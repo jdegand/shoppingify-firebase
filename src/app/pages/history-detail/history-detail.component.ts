@@ -9,8 +9,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
   selector: 'app-history-detail',
   standalone: true,
   imports: [NgIf, JsonPipe, AsyncPipe, NgFor, DatePipe, ScrollPanelModule],
-  templateUrl: './history-detail.component.html',
-  styleUrl: './history-detail.component.css'
+  templateUrl: './history-detail.component.html'
 })
 export class HistoryDetailComponent implements OnInit {
 

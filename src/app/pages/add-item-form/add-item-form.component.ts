@@ -15,8 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
   standalone: true,
   imports: [ReactiveFormsModule, DropdownModule, ButtonModule, ToastModule, InputTextModule],
   providers: [MessageService],
-  templateUrl: './add-item-form.component.html',
-  styleUrl: './add-item-form.component.css'
+  templateUrl: './add-item-form.component.html'
 })
 export class AddItemFormComponent implements OnInit {
   fb = inject(FormBuilder);

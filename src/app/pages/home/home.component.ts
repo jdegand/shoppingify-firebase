@@ -26,8 +26,7 @@ import { DividerModule } from 'primeng/divider';
   standalone: true,
   imports: [NgFor, AsyncPipe, TieredMenuModule, NgIf, JsonPipe, KeyValuePipe, SplitterModule, CardModule, TitleCasePipe, ButtonModule, ScrollPanelModule, ToastModule, TooltipModule, FormsModule, NameFilterPipe, InputTextModule, IconFieldModule, InputIconModule, DividerModule],
   providers: [MessageService],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
   itemFirebaseService = inject(ItemFirebaseService);
