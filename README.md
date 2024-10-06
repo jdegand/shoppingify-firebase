@@ -1,6 +1,6 @@
 # Shoppingify Firebase
 
-This is a reworking of a legacy [DevChallenges](https://legacy.devchallenges.io/challenges/mGd5VpbO4JnzU6I9l96x) project I completed with [React](https://github.com/jdegand/shoppingify-frontend).
+This is a reworking of a legacy [DevChallenges](https://web.archive.org/web/20231130033807/https://legacy.devchallenges.io/challenges/mGd5VpbO4JnzU6I9l96x) project I completed with [React](https://github.com/jdegand/shoppingify-frontend).
 
 ## Built With
 
